@@ -1,0 +1,131 @@
+V "GNAT Lib v2013"
+A -gnat12
+A -gnatA
+P SS ZX
+
+RN
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_IMPLICIT_LOOPS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK
+
+U path%b		path.adb		8e249fa8 NE OO PK
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+U path%s		path.ads		a75e4f2c EE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W adagraph%s		adagraph.ads		adagraph.ali
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20130417131022 3ffc8e18
+D a-except.ads		20130417131018 10fcae55
+D a-finali.ads		20130417131020 52ecdc1b
+D a-numeri.ads		20130417131020 bb51c45a
+D a-nuelfu.ads		20130417131020 03e83d1c
+D a-ngelfu.ads		20130417131020 243903c9
+D a-stream.ads		20130417131020 2ca4ee37
+D a-tags.ads		20130417131022 6c0509d0
+D a-unccon.ads		20130417131022 f9eb8f06
+D a-uncdea.ads		20130417131022 f15a5ed1
+D adagraph.ads		20120321152114 841afc69
+D gnat.ads		20130417131026 fd2ad2f1
+D g-socket.ads		20130417131026 923c234a
+D interfac.ads		20130417131026 cb4a8015
+D i-c.ads		20130417131026 5421119b
+D path.ads		20131027194442 9bfd4a03
+D path.adb		20131027201658 15d9d5ab
+D remote_adagraph.ads	20120410155526 10315145
+D system.ads		20130417131036 5fc8ae56
+D s-exctab.ads		20130417131028 66e51330
+D s-finmas.ads		20130417131028 b95bb341
+D s-finroo.ads		20130417131028 4ff27390
+D s-oscons.ads		20130417131552 cd9dc8c1
+D s-parame.ads		20130417131032 b6e20cc0
+D s-pooglo.ads		20130417131032 542f33d0
+D s-secsta.ads		20130417131032 eea35a36
+D s-soflin.ads		20130417131032 24c8153c
+D s-stache.ads		20130417131032 596fc1b4
+D s-stalib.ads		20130417131032 f78bcf95
+D s-stoele.ads		20130417131032 facd7d98
+D s-stoele.adb		20130417131032 afc5dc80
+D s-stopoo.ads		20130417131032 7b8fbeee
+D s-traent.ads		20130417131032 5221ee41
+X 1 ada.ads
+16K9*Ada 19e8 16|2r6 3r6 5r16 5r30
+X 4 a-numeri.ads
+16K13*Numerics 32e17 16|2w10 3r10 5r20 5r34
+X 5 a-nuelfu.ads
+18K22*Elementary_Functions[6|39] 16|3w19 5r43
+X 6 a-ngelfu.ads
+42V13*Sqrt{float} 17|52s17[5|18]
+X 11 adagraph.ads
+2K9*Adagraph=2:26 16|1w6 5r6 17|61r10 64r13
+X 16 path.ads
+7K9*Path 29l5 29e9 17|1b14 69l5 69t9
+8R9*Object 9r24 14r41 15r27 15r45 15r60 16r27 16r59 17r44 17r59 18r32 19r37
+. 20r38 21r29 25c9 25d17 27e14 28r24 28r34 17|2r41 3r13 3r23 8r27 8r45 8r60
+. 9r12 9r22 14r27 14r59 15r12 15r22 20r44 20r59 21r12 21r22 26r32 35r37 46r38
+. 56r29
+9r4*Null_path{8R9} 28c4
+10R9*Point 12e14 13r47 16r45 17r27 18r46 17|14r45 20r27 26r46 47r29 57r20
+11f7*X{float} 17|52r36 52r51 61r47 64r50
+11f10*Y{float} 17|52r70 52r85 61r71 64r74
+13A9*Points(10R9)<integer> 14r26 26r15 17|2r26
+14V13*Value{8R9} 14>20 17|2b13 6t7
+14a20 From{13A9} 17|2b20 3r39 3r62
+15V14*"&"{8R9} 15>18 15>35 17|8b14 12t7
+15r18 Left{8R9} 17|8b18 9r38 9r72
+15r35 Right{8R9} 17|8b35 9r50 9r86
+16V14*"&"{8R9} 16>18 16>35 17|14b14 18t7
+16r18 Left{8R9} 17|14b18 15r38 15r63
+16r35 Right{10R9} 17|14b35 15r77
+17V14*"&"{8R9} 17>18 17>34 17|20b14 24t7
+17r18 Left{10R9} 17|20b18 21r64
+17r34 Right{8R9} 17|20b34 21r38 21r71
+18U14*Add 18=19 18>40 17|26b14 33t7
+18r19 Path{8R9} 17|26b19 28r10 28r29 31m10 31r25
+18r40 P{10R9} 17|26b40 31r39
+19V13*Segment_Count{natural} 19>28 17|35b13 44t7 62s28
+19r28 Path{8R9} 17|35b28 38r10 41r19
+20V13*Segment_Length{float} 20>29 20>46 17|46b13 54t7
+20r29 Path{8R9} 17|46b29 50r21 51r19
+20i46 Segment{positive} 17|46b46 50r33 51r31
+21U14*Draw 21>20 21>37 17|56b14 67t7
+21r20 Path{8R9} 17|56b20 59r10 60r25 62r42 63r28
+21e37 Color{18|18E9} 17|56b37 64r78
+22X4*Overflow 17|29r16
+24I12 Count{natural} 25r23
+25i17*Size{24I12} 26r26 28m42 17|3m31 9m30 9r43 9r56 15m30 15r43 21m30 21r44
+. 28r34 59r15
+26a7*Values{13A9} 17|3m52 9m62 9r77 9r92 15m53 15r68 21m54 21r77 28r15 31m15
+. 31r30 38r15 41r24 50r26 51r24 60r30 63r33
+X 17 path.adb
+3r7 Path{16|8R9} 5r14
+9r6 Path{16|8R9} 11r14
+15r6 Path{16|8R9} 17r14
+21r6 Path{16|8R9} 23r14
+36i4 Count{natural} 39m10 41m10 43r14
+47r7 StartPoint{16|10R9} 50m7 52r40 52r74
+47r19 EndPoint{16|10R9} 51m7 52r27 52r61
+48f7 Length{float} 52m7 53r14
+57r7 TargetPoint{16|10R9} 60m10 61r35 61r59 63m13 64r38 64r62
+62i14 Segment{integer} 63r40
+X 18 remote_adagraph.ads
+18E9*Color_Type 16|21r47 17|56r47 18|20e76
+19n59*Light_Green{18E9} 16|21r61 17|56r61
+89U14*Goto_XY 17|61s19
+90U14*Draw_To 17|64s22
+
