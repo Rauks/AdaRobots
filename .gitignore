@@ -1,0 +1,4 @@
+# Gnat GPS #
+*.ali
+*.o
+*.exe

@@ -15,7 +15,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK
 
-U path%b		path.adb		8e249fa8 NE OO PK
+U path%b		path.adb		430fca9f NE OO PK
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
@@ -46,7 +46,7 @@ D g-socket.ads		20130417131026 923c234a
 D interfac.ads		20130417131026 cb4a8015
 D i-c.ads		20130417131026 5421119b
 D path.ads		20131027194442 9bfd4a03
-D path.adb		20131027201658 15d9d5ab
+D path.adb		20131027212958 d8f2809c
 D remote_adagraph.ads	20120410155526 10315145
 D system.ads		20130417131036 5fc8ae56
 D s-exctab.ads		20130417131028 66e51330
@@ -81,8 +81,8 @@ X 16 path.ads
 . 56r29
 9r4*Null_path{8R9} 28c4
 10R9*Point 12e14 13r47 16r45 17r27 18r46 17|14r45 20r27 26r46 47r29 57r20
-11f7*X{float} 17|52r36 52r51 61r47 64r50
-11f10*Y{float} 17|52r70 52r85 61r71 64r74
+11f7*X{float} 17|52r32 52r47 61r47 64r50
+11f10*Y{float} 17|52r65 52r80 61r71 64r74
 13A9*Points(10R9)<integer> 14r26 26r15 17|2r26
 14V13*Value{8R9} 14>20 17|2b13 6t7
 14a20 From{13A9} 17|2b20 3r39 3r62
@@ -98,28 +98,28 @@ X 16 path.ads
 18U14*Add 18=19 18>40 17|26b14 33t7
 18r19 Path{8R9} 17|26b19 28r10 28r29 31m10 31r25
 18r40 P{10R9} 17|26b40 31r39
-19V13*Segment_Count{natural} 19>28 17|35b13 44t7 62s28
+19V13*Segment_Count{natural} 19>28 17|35b13 44t7
 19r28 Path{8R9} 17|35b28 38r10 41r19
 20V13*Segment_Length{float} 20>29 20>46 17|46b13 54t7
 20r29 Path{8R9} 17|46b29 50r21 51r19
 20i46 Segment{positive} 17|46b46 50r33 51r31
 21U14*Draw 21>20 21>37 17|56b14 67t7
-21r20 Path{8R9} 17|56b20 59r10 60r25 62r42 63r28
+21r20 Path{8R9} 17|56b20 59r10 60r25 62r28 63r28
 21e37 Color{18|18E9} 17|56b37 64r78
 22X4*Overflow 17|29r16
 24I12 Count{natural} 25r23
 25i17*Size{24I12} 26r26 28m42 17|3m31 9m30 9r43 9r56 15m30 15r43 21m30 21r44
 . 28r34 59r15
 26a7*Values{13A9} 17|3m52 9m62 9r77 9r92 15m53 15r68 21m54 21r77 28r15 31m15
-. 31r30 38r15 41r24 50r26 51r24 60r30 63r33
+. 31r30 38r15 41r24 50r26 51r24 60r30 62r33 63r33
 X 17 path.adb
 3r7 Path{16|8R9} 5r14
 9r6 Path{16|8R9} 11r14
 15r6 Path{16|8R9} 17r14
 21r6 Path{16|8R9} 23r14
 36i4 Count{natural} 39m10 41m10 43r14
-47r7 StartPoint{16|10R9} 50m7 52r40 52r74
-47r19 EndPoint{16|10R9} 51m7 52r27 52r61
+47r7 StartPoint{16|10R9} 50m7 52r36 52r69
+47r19 EndPoint{16|10R9} 51m7 52r23 52r56
 48f7 Length{float} 52m7 53r14
 57r7 TargetPoint{16|10R9} 60m10 61r35 61r59 63m13 64r38 64r62
 62i14 Segment{integer} 63r40
