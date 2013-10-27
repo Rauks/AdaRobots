@@ -1,0 +1,224 @@
+V "GNAT Lib v2013"
+M P W=b
+A -gnatA
+P SS ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_LOCAL_ALLOCATORS
+RV NO_RELATIVE_DELAY
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK
+RV MAX_TASKS=1+
+
+U test_adagraph%b	test_adagraph.adb	a80f1698 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W adagraph%s		adagraph.ads		adagraph.ali
+W byte_source%s		byte_source.ads		byte_source.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.sockets%s	g-socket.adb		g-socket.ali
+W osc_listener%s	osc_listener.ads	osc_listener.ali
+W osc_listener.display%s  osc_listener-display.ads  osc_listener-display.ali
+W osc_server%s		osc_server.ads		osc_server.ali
+W system%s		system.ads		system.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W udp_source%s		udp_source.ads		udp_source.ali
+
+D ada.ads		20130417131022 3ffc8e18
+D a-calend.ads		20130417131018 d86d6c8c
+D a-caldel.ads		20130417131018 9f20b83d
+D a-charac.ads		20130417131018 2d3ec45b
+D a-chlat1.ads		20130417131018 2825df20
+D a-except.ads		20130417131018 10fcae55
+D a-finali.ads		20130417131020 52ecdc1b
+D a-numeri.ads		20130417131020 bb51c45a
+D a-nuelfu.ads		20130417131020 03e83d1c
+D a-ngelfu.ads		20130417131020 243903c9
+D a-reatim.ads		20130417131020 63f07669
+D a-stream.ads		20130417131020 2ca4ee37
+D a-string.ads		20130417131020 90ac6797
+D a-strmap.ads		20130417131020 9cb836fb
+D a-strunb.ads		20130417131020 3f91d4c5
+D a-tags.ads		20130417131022 6c0509d0
+D a-unccon.ads		20130417131022 f9eb8f06
+D a-uncdea.ads		20130417131022 f15a5ed1
+D adagraph.ads		20120321142114 841afc69
+D byte_source.ads	20120416094952 94647070
+D gnat.ads		20130417131026 fd2ad2f1
+D g-socket.ads		20130417131026 923c234a
+D interfac.ads		20130417131026 cb4a8015
+D i-c.ads		20130417131026 5421119b
+D i-cstrin.ads		20130417131026 341d0ddf
+D nio_buffer.ads	20120416092952 b4e7e002
+D nio_buffer-byte_buffer.ads  20120416093140 8dab692b
+D osc_argument.ads	20120327162922 1a608ffe
+D osc_listener.ads	20120404160442 e1e9bab5
+D osc_listener-display.ads  20120403074444 67e1462a
+D osc_server.ads	20120416100724 6c016ed6
+D remote_adagraph.ads	20120410145526 10315145
+D system.ads		20130417131036 5fc8ae56
+D s-atacco.ads		20130417131028 4c36d12f
+D s-atocou.ads		20130417131028 4a9c6cb4
+D s-atocou.adb		20130417131028 c864ec10
+D s-exctab.ads		20130417131028 66e51330
+D s-finmas.ads		20130417131028 b95bb341
+D s-finroo.ads		20130417131028 4ff27390
+D s-maccod.ads		20130417131030 0fbb7bce
+D s-multip.ads		20130417131030 38ac9f73
+D s-oscons.ads		20130417131552 cd9dc8c1
+D s-osinte.ads		20130417131030 ecf1fbfd
+D s-parame.ads		20130417131032 b6e20cc0
+D s-pooglo.ads		20130417131032 542f33d0
+D s-secsta.ads		20130417131032 eea35a36
+D s-soflin.ads		20130417131032 24c8153c
+D s-stache.ads		20130417131032 596fc1b4
+D s-stausa.ads		20130417131032 017a0a05
+D s-stalib.ads		20130417131032 f78bcf95
+D s-stoele.ads		20130417131032 facd7d98
+D s-stoele.adb		20130417131032 afc5dc80
+D s-stopoo.ads		20130417131032 7b8fbeee
+D s-stposu.ads		20130417131032 ffeba1c5
+D s-stratt.ads		20130417131032 aedef97e
+D s-tasinf.ads		20130417131032 859198ad
+D s-taspri.ads		20130417131032 196697f7
+D s-taprop.ads		20130417131032 1dd2e1b6
+D s-taskin.ads		20130417131032 59e95256
+D s-tassta.ads		20130417131032 70812003
+D s-traent.ads		20130417131032 5221ee41
+D s-unstyp.ads		20130417131034 6ae15c76
+D s-win32.ads		20130417131034 e5a79fe6
+D test_adagraph.adb	20120416132924 77e6e654
+D udp_source.ads	20120416095156 eef28e25
+X 1 ada.ads
+16K9*Ada 19e8 64|7r6 8r6 15r30 15r44
+X 8 a-numeri.ads
+16K13*Numerics 32e17 64|7w10 8r10 15r34 15r48
+21N4*Pi 64|30r33
+X 9 a-nuelfu.ads
+18K22*Elementary_Functions[10|39] 64|8w19 15r57
+X 10 a-ngelfu.ads
+64V13*Sin{float} 64|35s28[9|18]
+72V13*Cos{float} 64|34s28[9|18]
+X 19 adagraph.ads
+2K9*Adagraph=2:26 64|6w6 15r20
+X 20 byte_source.ads
+6K9*Byte_Source 13e4 64|10w6 25r14
+8h9*Object
+9P9*Any(8R9) 64|25r26
+X 21 gnat.ads
+34K9*GNAT 37e9 64|5r6 15r6
+X 22 g-socket.ads
+58K14*Sockets 1262e17 64|5w11 15r11
+479I9*Port_Type<integer> 64|19r28
+X 29 osc_listener.ads
+5K9*OSC_Listener 13e4 64|12r6 26r44
+7h12*Object
+X 30 osc_listener-display.ads
+7K22*Display 13e4 64|12w19 26r57
+9R9*Object<29|7R12> 9e59 64|26r65
+X 31 osc_server.ads
+6K9*OSC_Server 18e4 64|13w6 26r12 118r4
+8T9*Object 16e7 64|26r23
+10U14*Shutdown 64|118s15
+X 32 remote_adagraph.ads
+18E9*Color_Type 20e76 64|28r79 44r15 45r24 55r15 56r24 91r13 93r45 95r45
+18n24*Black{18E9} 64|83r35 92r15
+18n37*Green{18E9} 64|109r60
+18n55*Magenta{18E9} 64|73r39 80r35
+19n24*Light_Gray{18E9} 64|47r36 59r56 111r63
+19n47*Light_Blue{18E9} 64|69r57
+19n59*Light_Green{18E9} 64|104r38 105r38
+20n24*Light_Cyan{18E9} 64|74r39
+20n70*White{18E9} 64|28r93
+22n23*Fill{22E9} 64|48r55 58r59 93r67
+22n29*No_Fill{22E9} 64|47r48 59r68 95r67
+42U14*Create_Sized_Graph_Window 64|65s4
+47U14*Destroy_Graph_Window 64|120s4
+51U14*Set_Window_Title 64|66s4
+59V13*Key_Hit{boolean} 64|116s14
+73U14*Clear_Window 64|67s4
+76U14*Draw_Line 64|80s7 83s7 111s7
+77U14*Draw_Box 64|47s10 48s10
+78U14*Draw_Circle 64|93s11 95s11
+79U14*Draw_Ellipse 64|58s10 59s10
+80U14*Display_Text 64|69s4 109s4
+80e63 Hue{18E9} 64|69r50 109r53
+87V14*Where_X{integer} 64|36s18
+88V14*Where_Y{integer} 64|36s42
+89U14*Goto_XY 64|32s7
+90U14*Draw_To 64|36s10
+98U14*Set_Antialiasing 64|72s4 75s4 87s4
+104U14*Set_Immediate_Rendering 64|81s7 82s7 86s4
+109U14*Create_Control_Surface 64|114s4
+113U14*Destroy_Control_Surface 64|119s4
+X 49 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 64 test_adagraph.adb
+17U11*Test_Adagraph 17b11 122t4
+19i4 OSC_Port{22|479I9} 25r58 114r54
+20a4 Local_Host{string} 114r42
+21a4 CS_Class_Name{string} 114r27
+23i4 X_Max{integer} 65m40
+23i11 Y_Max{integer} 65m47
+23i27 X_Char{integer} 65m54 111r23 111r46
+23i35 Y_Char{integer} 65m62
+25p4 CS_Inlet{20|9P9} 26r30
+26t4 Dumper{31|8T9} 118m24 118r24
+28U14 Draw_Spiral 28b14 28>27 28>30 28>42 28>58 28>74 39t7 73s4 74s4 104s4
+. 105s4
+28i27 X{integer} 32r15
+28i30 Y{integer} 32r18
+28f42 Degrees{float} 30r23
+28i58 Steps{integer} 33r19
+28e74 Hue{32|18E9} 36r65
+29f7 Heading{float} 34r33 35r33 37m10 37r21
+29f16 dx{float} 34m10 36r37
+29f20 dy{float} 35m10 36r60
+30f7 Angle{float} 37r31
+33i11 L{integer} 34r23 35r23
+41U14 Draw_Colored_Boxes 41b14 41>34 41>37 41>40 41>43 50t7 70s4
+41i34 X{integer} 45r16
+41i37 Y{integer} 45r49
+41i40 W{integer} 45r20 46r21
+41i43 H{integer} 46r36
+42i7 X1{integer} 45m10 46r16 47r20 48r20
+42i11 X2{integer} 46m10 47r28 48r36
+42i15 Y1{integer} 45m43 46r31 47r24 48r28
+42i19 Y2{integer} 46m25 47r32 48r44
+44e10 C{32|18E9} 45r39 48r52
+52U14 Draw_Colored_Ellipses 52b14 52>37 52>40 52>43 52>46 61t7 102s4
+52i37 X{integer} 56r16
+52i40 Y{integer} 56r49
+52i43 W{integer} 56r20 57r21
+52i46 H{integer} 57r36
+53i7 X1{integer} 56m10 57r16 58r24 59r24
+53i11 X2{integer} 57m10 58r40 59r40
+53i15 Y1{integer} 56m43 57r31 58r32 59r32
+53i19 Y2{integer} 57m25 58r48 59r48
+55e10 C{32|18E9} 56r39 58r56
+79i8 i{integer} 80r32 83r32
+91e8 C{32|18E9} 92r11 93r60 93r64 95r60 95r64
+110i8 i{integer} 111r32 111r55
+X 65 udp_source.ads
+8K9*UDP_Source 64|11w6 25r33 65|24e4
+13V13*Value{20|9P9} 64|25s44
+13i19 Port{22|479I9} 64|25r50
+13b52 Blocking{boolean} 64|25r68
+

@@ -1,0 +1,138 @@
+V "GNAT Lib v2013"
+M P W=b
+A -gnat12
+A -gnatA
+P ZX
+
+RN
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_RELATIVE_DELAY
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK
+
+U main%b		main.adb		fb16a298 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W adagraph%s		adagraph.ads		adagraph.ali
+
+D ada.ads		20130417131022 3ffc8e18
+D a-calend.ads		20130417131018 d86d6c8c
+D a-caldel.ads		20130417131018 9f20b83d
+D a-except.ads		20130417131018 10fcae55
+D a-finali.ads		20130417131020 52ecdc1b
+D a-numeri.ads		20130417131020 bb51c45a
+D a-nuelfu.ads		20130417131020 03e83d1c
+D a-ngelfu.ads		20130417131020 243903c9
+D a-stream.ads		20130417131020 2ca4ee37
+D a-tags.ads		20130417131022 6c0509d0
+D a-unccon.ads		20130417131022 f9eb8f06
+D a-uncdea.ads		20130417131022 f15a5ed1
+D adagraph.ads		20120321142114 841afc69
+D gnat.ads		20130417131026 fd2ad2f1
+D g-socket.ads		20130417131026 923c234a
+D interfac.ads		20130417131026 cb4a8015
+D i-c.ads		20130417131026 5421119b
+D main.adb		20130926111552 c7b5a7b7
+D remote_adagraph.ads	20120410145526 10315145
+D system.ads		20130417131036 5fc8ae56
+D s-exctab.ads		20130417131028 66e51330
+D s-finmas.ads		20130417131028 b95bb341
+D s-finroo.ads		20130417131028 4ff27390
+D s-oscons.ads		20130417131552 cd9dc8c1
+D s-parame.ads		20130417131032 b6e20cc0
+D s-pooglo.ads		20130417131032 542f33d0
+D s-soflin.ads		20130417131032 24c8153c
+D s-stache.ads		20130417131032 596fc1b4
+D s-stalib.ads		20130417131032 f78bcf95
+D s-stoele.ads		20130417131032 facd7d98
+D s-stoele.adb		20130417131032 afc5dc80
+D s-stopoo.ads		20130417131032 7b8fbeee
+D s-traent.ads		20130417131032 5221ee41
+X 1 ada.ads
+16K9*Ada 19e8 18|2r6 3r6 5r16 5r30
+X 6 a-numeri.ads
+16K13*Numerics 32e17 18|2w10 3r10 5r20 5r34
+21N4*Pi 18|13r33
+X 7 a-nuelfu.ads
+18K22*Elementary_Functions[8|39] 18|3w19 5r43
+X 8 a-ngelfu.ads
+64V13*Sin{float} 18|18s28[7|18]
+72V13*Cos{float} 18|17s28[7|18]
+X 13 adagraph.ads
+2K9*Adagraph=2:26 18|1w6 5r6 15r7 19r10 41r10 42r10 47r4 48r4 49r4 51r4 55r4
+. 58r4 63r7 64r7 65r7 66r7 69r4 70r4 76r11 78r11 92r4 95r7 99r14 101r4
+X 18 main.adb
+7U11*Main 7b11 103t4
+9i4 X_Max{integer} 47m49
+9i11 Y_Max{integer} 47m56
+9i27 X_Char{integer} 47m63 95r32 95r55
+9i35 Y_Char{integer} 47m71
+11U14 Draw_Spiral 11b14 11>27 11>30 11>42 11>58 11>74 22t7 56s4 57s4 87s4
+. 88s4
+11i27 X{integer} 15r24
+11i30 Y{integer} 15r27
+11f42 Degrees{float} 13r23
+11i58 Steps{integer} 16r19
+11e74 Hue{19|18E9} 19r74
+12f7 Heading{float} 17r33 18r33 20m10 20r21
+12f16 dx{float} 17m10 19r46
+12f20 dy{float} 18m10 19r69
+13f7 Angle{float} 20r31
+16i11 L{integer} 17r23 18r23
+24U14 Draw_Colored_Boxes 24b14 24>34 24>37 24>40 24>43 33t7 53s4
+24i34 X{integer} 28r16
+24i37 Y{integer} 28r49
+24i40 W{integer} 28r20 29r21
+24i43 H{integer} 29r36
+25i7 X1{integer} 28m10 29r16 30r20 31r20
+25i11 X2{integer} 29m10 30r28 31r36
+25i15 Y1{integer} 28m43 29r31 30r24 31r28
+25i19 Y2{integer} 29m25 30r32 31r44
+27e10 C{19|18E9} 28r39 31r52
+35U14 Draw_Colored_Ellipses 35b14 35>37 35>40 35>43 35>46 44t7 85s4
+35i37 X{integer} 39r16
+35i40 Y{integer} 39r49
+35i43 W{integer} 39r20 40r21
+35i46 H{integer} 40r36
+36i7 X1{integer} 39m10 40r16 41r33 42r33
+36i11 X2{integer} 40m10 41r49 42r49
+36i15 Y1{integer} 39m43 40r31 41r41 42r41
+36i19 Y2{integer} 40m25 41r57 42r57
+38e10 C{19|18E9} 39r39 41r65
+62i8 i{integer} 63r41 66r41
+74e8 C{19|18E9} 75r11 76r69 76r73 78r69 78r73
+94i8 i{integer} 95r41 95r64
+X 19 remote_adagraph.ads
+18E9*Color_Type 18|11r79 27r15 28r24 38r15 39r24 74r13 76r54 78r54 19|20e76
+18n24*Black{18E9} 18|66r44 75r15
+18n37*Green{18E9} 18|92r69
+18n55*Magenta{18E9} 18|56r39 63r44
+19n24*Light_Gray{18E9} 18|30r36 42r65 95r72
+19n47*Light_Blue{18E9} 18|51r66
+19n59*Light_Green{18E9} 18|87r38 88r38
+20n24*Light_Cyan{18E9} 18|57r39
+20n70*White{18E9} 18|11r93
+22n23*Fill{22E9} 18|31r55 41r68 76r76
+22n29*No_Fill{22E9} 18|30r48 42r77 78r76
+42U14*Create_Sized_Graph_Window 18|47s13
+47U14*Destroy_Graph_Window 18|101s13
+51U14*Set_Window_Title 18|48s13
+59V13*Key_Hit{boolean} 18|99s23
+73U14*Clear_Window 18|49s13
+76U14*Draw_Line 18|63s16 66s16 95s16
+77U14*Draw_Box 18|30s10 31s10
+78U14*Draw_Circle 18|76s20 78s20
+79U14*Draw_Ellipse 18|41s19 42s19
+80U14*Display_Text 18|51s13 92s13
+80e63 Hue{18E9} 18|51r59 92r62
+87V14*Where_X{integer} 18|19s27
+88V14*Where_Y{integer} 18|19s51
+89U14*Goto_XY 18|15s16
+90U14*Draw_To 18|19s19
+98U14*Set_Antialiasing 18|55s13 58s13 70s13
+104U14*Set_Immediate_Rendering 18|64s16 65s16 69s13
+
