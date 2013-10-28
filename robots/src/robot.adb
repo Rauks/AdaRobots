@@ -1,10 +1,13 @@
+with Robot.Trajectory;
+
+use Robot.Trajectory;
+
 package body Robot is
    task body Object is
       Ready: Boolean := True;
-      RobotPath: Path.Object;
+      RobotRoute: Trajectory.Object;
 
-      K: Float := 0.0;
-      dK: Float := 0.1;
+      Speed: Float := 75.0;
       dt: Duration := 0.05;
    begin
       loop
@@ -12,16 +15,17 @@ package body Robot is
             when Ready =>
                accept Follow (P: in Path.Object) do
                   Ready := False;
-                  RobotPath := P;
+                  Trajectory.Open(RobotRoute, P, Speed);
                end;
-               for Segment in 1..Segment_Count(RobotPath) loop
-                  K:= 0.0;
-                  while K <= 1.0 loop
-                     Adagraph.Draw_Circle (Integer(X(RobotPath, Segment, K)), Integer(Y(RobotPath, Segment, K)), 20);
-                     K := K + dK;
-                     delay dt;
-                  end loop;
+               while not Trajectory.At_End(RobotRoute) loop
+                  Adagraph.Draw_Circle(X      => Integer(Trajectory.X(RobotRoute)),
+                                       Y      => Integer(Trajectory.Y(RobotRoute)),
+                                       Radius => 20,
+                                       Hue    => Color);
+                  delay dt;
+                  Trajectory.Next(RobotRoute, Float(dt));
                end loop;
+               Trajectory.Close(RobotRoute);
 
                Ready := True;
          or
