@@ -62,4 +62,17 @@ package body Path is
       end if;
    end;
 
+   function X (Path: in Object; Segment: in Positive; K: in ParametricCoef) return Float is
+      X1: Float := Path.Values(Segment).X;
+      X2: Float := Path.Values(Segment + 1).X;
+   begin
+      return (X1 + (X2 - X1)*K);
+   end;
+
+   function Y (Path: in Object; Segment: in Positive; K: in ParametricCoef) return Float is
+      Y1: Float := Path.Values(Segment).Y;
+      Y2: Float := Path.Values(Segment + 1).Y;
+   begin
+      return (Y1 + (Y2 - Y1)*K);
+   end;
 end Path;

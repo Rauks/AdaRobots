@@ -19,6 +19,10 @@ package Path is
    function Segment_Count (Path: in Object) return Natural;
    function Segment_Length (Path: in Object; Segment: in Positive) return Float;
    procedure Draw (Path: in Object; Color: in Color_Type := Light_Green);
+
+   subtype ParametricCoef is Float range 0.0..1.0;
+   function X (Path: in Object; Segment: in Positive; K: in ParametricCoef) return Float;
+   function Y (Path: in Object; Segment: in Positive; K: in ParametricCoef) return Float;
 private
    subtype Count is Natural range 0..50;
    type Object (Size: Count := 0) is record
