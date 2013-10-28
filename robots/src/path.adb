@@ -25,11 +25,7 @@ package body Path is
 
    procedure Add (Path: in out Object; P: in Point) is
    begin
-      if Path.Values'Last = Path.Size then
-         raise Overflow;
-      else
-         Path.Values := Path.Values & P;
-      end if;
+      Path := Path & P;
    end;
 
    function Segment_Count (Path: in Object) return Natural is
