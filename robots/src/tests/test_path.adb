@@ -1,8 +1,9 @@
 with Path;
+with Robot;
 with Adagraph;
 with Text_IO;
 
-use Path, Adagraph, Text_IO;
+use Path, Robot, Adagraph, Text_IO;
 
 procedure Test_Path is
    X_Max, Y_Max: Integer; X_Char, Y_Char: Integer;
@@ -11,6 +12,8 @@ procedure Test_Path is
    P1: Points := (A, B);
    P2: Points := (C, D);
    P: Path.Object;
+
+   R: Robot.Object(Color => White);
 
    K: Float := 0.0;
    dK: Float := 0.1;
@@ -36,10 +39,6 @@ begin
 
    Draw(P);
 
-   while K <= 1.0 loop
-      Put_Line (Float'Image(K));
-      Adagraph.Draw_Circle (Integer(X(Value(P1), 1, K)), Integer(Y(Value(P1), 1, K)), 20);
-      K := K + dK;
-      delay dt;
-   end loop;
+   R.Follow(P);
+   R.Shutdown;
 end;
