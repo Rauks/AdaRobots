@@ -10,6 +10,7 @@ procedure Test_Path is
    A, B, C, D, E: Point;
    P1: Points := (A, B);
    P2: Points := (C, D);
+   P: Path.Object;
 
    K: Float := 0.0;
    dK: Float := 0.1;
@@ -28,10 +29,12 @@ begin
    Adagraph.Set_Window_Title("Path Tests");
    Adagraph.Clear_Window;
 
-   Adagraph.Display_Text (300, 80, "Segments : " & Integer'Image(Segment_Count(Value(P1) & Value(P2) & E)) , Hue => Light_Blue);
-   Adagraph.Display_Text (300, 100, "Distance AB : " & Float'Image(Segment_Length(Value(P1), 1)) , Hue => Light_Blue);
+   P := Value(P1) & Value(P2) & E;
 
-   Draw(Value(P1) & Value(P2) & E);
+   Adagraph.Display_Text (300, 80, "Segments : " & Integer'Image(Segment_Count(P)) , Hue => Light_Blue);
+   Adagraph.Display_Text (300, 100, "Distance AB : " & Float'Image(Segment_Length(P, 1)) , Hue => Light_Blue);
+
+   Draw(P);
 
    while K <= 1.0 loop
       Put_Line (Float'Image(K));
