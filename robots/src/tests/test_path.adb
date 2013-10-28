@@ -1,7 +1,8 @@
 with Path;
 with Adagraph;
+with Text_IO;
 
-use Path, Adagraph;
+use Path, Adagraph, Text_IO;
 
 procedure Test_Path is
    X_Max, Y_Max: Integer; X_Char, Y_Char: Integer;
@@ -9,6 +10,10 @@ procedure Test_Path is
    A, B, C, D, E: Point;
    P1: Points := (A, B);
    P2: Points := (C, D);
+
+   K: Float := 0.0;
+   dK: Float := 0.1;
+   dt: Duration := 0.05;
 begin
    A := Point'(200.0, 200.0);
    B := Point'(400.0, 400.0);
@@ -28,7 +33,10 @@ begin
 
    Draw(Value(P1) & Value(P2) & E);
 
-   while not Adagraph.Key_Hit loop delay 0.1; end loop;
-
-   Adagraph.Destroy_Graph_Window;
+   while K <= 1.0 loop
+      Put_Line (Float'Image(K));
+      Adagraph.Draw_Circle (Integer(X(Value(P1), 1, K)), Integer(Y(Value(P1), 1, K)), 20);
+      K := K + dK;
+      delay dt;
+   end loop;
 end;
