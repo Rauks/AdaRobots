@@ -33,7 +33,10 @@ package body Robot.Trajectory is
          Trajectory.K := 0.0;
          Trajectory.Segment := Trajectory.Segment + 1;
       end if;
+
       dK := (Trajectory.Speed / Path.Segment_Length(Trajectory.Route, Trajectory.Segment)) * dt;
+      Trajectory.K := Trajectory.K + dK;
+
       if Trajectory.K > 1.0 then
          Trajectory.K := 1.0;
       end if;
