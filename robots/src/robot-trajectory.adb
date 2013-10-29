@@ -4,9 +4,9 @@ package body Robot.Trajectory is
       return Trajectory.Route;
    end;
 
-   procedure Open (Trajectory: in out Object; Route: in Path.Object; Speed: in float) is
+   procedure Open (Trajectory: in out Object; From: in Site.Input_Places; To: in Site.Output_Places; Speed: in float) is
    begin
-      Trajectory.Route := Route;
+      Trajectory.Route := Site.Route(From, To);
       Trajectory.Speed := Speed;
       Trajectory.Segment := 1;
       Trajectory.K := 0.0;

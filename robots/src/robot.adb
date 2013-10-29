@@ -6,25 +6,29 @@ package body Robot is
    task body Object is
       Ready: Boolean := True;
       RobotRoute: Trajectory.Object;
-
-      Speed: Float := 75.0;
-      dt: Duration := 0.05;
    begin
       loop
          select
             when Ready =>
-               accept Follow (P: in Path.Object) do
+               accept Go (From: in Site.Input_Places; To: in Site.Output_Places) do
                   Ready := False;
-                  Trajectory.Open(RobotRoute, P, Speed);
+                  Trajectory.Open(RobotRoute, From, To, Speed);
                end;
+               Site.Safely.Draw_Robot(X     => Integer(Trajectory.X(RobotRoute)),
+                                      Y     => Integer(Trajectory.Y(RobotRoute)),
+                                      Color => Color);
                while not Trajectory.At_End(RobotRoute) loop
-                  Adagraph.Draw_Circle(X      => Integer(Trajectory.X(RobotRoute)),
-                                       Y      => Integer(Trajectory.Y(RobotRoute)),
-                                       Radius => 20,
-                                       Hue    => Color);
-                  delay dt;
-                  Trajectory.Next(RobotRoute, Float(dt));
+                  delay Dt;
+                  Site.Safely.Hide_Robot(X     => Integer(Trajectory.X(RobotRoute)),
+                                         Y     => Integer(Trajectory.Y(RobotRoute)));
+                  Trajectory.Next(RobotRoute, Float(Dt));
+                  Site.Safely.Draw_Robot(X     => Integer(Trajectory.X(RobotRoute)),
+                                         Y     => Integer(Trajectory.Y(RobotRoute)),
+                                         Color => Color);
                end loop;
+               delay Dt;
+               Site.Safely.Hide_Robot(X     => Integer(Trajectory.X(RobotRoute)),
+                                      Y     => Integer(Trajectory.Y(RobotRoute)));
                Trajectory.Close(RobotRoute);
 
                Ready := True;
