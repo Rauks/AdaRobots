@@ -94,7 +94,7 @@ package body Site is
       end case;
    end;
 
-   function X (Place: in Place_Names; Scale: Float := Scale_Default) return Float is
+   function X (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
    begin
       case Place is
          when C =>
@@ -102,43 +102,43 @@ package body Site is
          when R1 =>
             return Scale * Cos (Pi/6.0);
          when R2 =>
-            return 0.0;
+            return Scale * Cos (Pi/2.0);
          when R3 =>
             return Scale * Cos (5.0 * Pi/6.0);
          when R4 =>
             return Scale * Cos (-5.0 * Pi/6.0);
          when R5 =>
-            return 0.0;
+            return Scale * Cos (-Pi/2.0);
          when R6 =>
             return Scale * Cos (-Pi/6.0);
          when I1 =>
-            return Scale * Cos (Pi/6.0) + Scale_IO_Default * Cos (Pi/3.0);
+            return X(R1, Scale, Scale_IO) + Scale_IO * Cos (Pi/3.0);
          when I2 =>
-            return 0.0 + Scale_IO_Default * Cos (2.0 * Pi/3.0);
+            return X(R2, Scale, Scale_IO) + Scale_IO * Cos (2.0 * Pi/3.0);
          when I3 =>
-            return Scale * Cos (5.0 * Pi/6.0) + Scale_IO_Default * Cos (Pi);
+            return X(R3, Scale, Scale_IO) + Scale_IO * Cos (Pi);
          when I4 =>
-            return Scale * Cos (-5.0 * Pi/6.0) + Scale_IO_Default * Cos (-2.0 * Pi/3.0);
+            return X(R4, Scale, Scale_IO) + Scale_IO * Cos (-2.0 * Pi/3.0);
          when I5 =>
-            return 0.0 + Scale_IO_Default * Cos (-Pi/3.0);
+            return X(R5, Scale, Scale_IO) + Scale_IO * Cos (-Pi/3.0);
          when I6 =>
-            return Scale * Cos (-Pi/6.0) + Scale_IO_Default;
+            return X(R6, Scale, Scale_IO) + Scale_IO * Cos (0.0);
          when O1 =>
-            return Scale * Cos (Pi/6.0) + Scale_IO_Default;
+            return X(R1, Scale, Scale_IO) + Scale_IO * Cos (0.0);
          when O2 =>
-            return 0.0 + Scale_IO_Default * Cos (Pi/3.0);
+            return X(R2, Scale, Scale_IO) + Scale_IO * Cos (Pi/3.0);
          when O3 =>
-            return Scale * Cos (5.0 * Pi/6.0) + Scale_IO_Default * Cos (2.0 * Pi/3.0);
+            return X(R3, Scale, Scale_IO) + Scale_IO * Cos (2.0 * Pi/3.0);
          when O4 =>
-            return Scale * Cos (-5.0 * Pi/6.0) + Scale_IO_Default * Cos (Pi);
+            return X(R4, Scale, Scale_IO) + Scale_IO * Cos (Pi);
          when O5 =>
-            return 0.0 + Scale_IO_Default * Cos (-2.0 * Pi/3.0);
+            return X(R5, Scale, Scale_IO) + Scale_IO * Cos (-2.0 * Pi/3.0);
          when O6 =>
-            return Scale * Cos (-Pi/6.0) + Scale_IO_Default * Cos (-Pi/3.0);
+            return X(R6, Scale, Scale_IO) + Scale_IO * Cos (-Pi/3.0);
       end case;
    end;
 
-   function Y (Place: in Place_Names; Scale: Float := Scale_Default) return Float is
+   function Y (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
    begin
       case Place is
          when C =>
@@ -146,39 +146,39 @@ package body Site is
          when R1 =>
             return -Scale * Sin (Pi/6.0);
          when R2 =>
-            return -Scale;
+            return -Scale * Sin (Pi/2.0);
          when R3 =>
             return -Scale * Sin (5.0 * Pi/6.0);
          when R4 =>
             return -Scale * Sin (-5.0 * Pi/6.0);
          when R5 =>
-            return Scale;
+            return -Scale * Sin (-Pi/2.0);
          when R6 =>
             return -Scale * Sin (-Pi/6.0);
          when I1 =>
-            return -Scale * Sin (Pi/6.0) - Scale_IO_Default * Sin (Pi/3.0);
+            return Y(R1, Scale, Scale_IO) - Scale_IO * Sin (Pi/3.0);
          when I2 =>
-            return -Scale - Scale_IO_Default * Sin (2.0 * Pi/3.0);
+            return Y(R2, Scale, Scale_IO) - Scale_IO * Sin (2.0 * Pi/3.0);
          when I3 =>
-            return -Scale * Sin (5.0 * Pi/6.0) - Scale_IO_Default * Sin (Pi);
+            return Y(R3, Scale, Scale_IO) - Scale_IO * Sin (Pi);
          when I4 =>
-            return -Scale * Sin (-5.0 * Pi/6.0) - Scale_IO_Default * Sin (-2.0 * Pi/3.0);
+            return Y(R4, Scale, Scale_IO) - Scale_IO * Sin (-2.0 * Pi/3.0);
          when I5 =>
-            return Scale - Scale_IO_Default * Sin (-Pi/3.0);
+            return Y(R5, Scale, Scale_IO) - Scale_IO * Sin (-Pi/3.0);
          when I6 =>
-            return -Scale * Sin (-Pi/6.0);
+            return Y(R6, Scale, Scale_IO) - Scale_IO * Sin (0.0);
          when O1 =>
-            return -Scale * Sin (Pi/6.0);
+            return Y(R1, Scale, Scale_IO) - Scale_IO * Sin (0.0);
          when O2 =>
-            return -Scale - Scale_IO_Default * Sin (Pi/3.0);
+            return Y(R2, Scale, Scale_IO) - Scale_IO_Default * Sin (Pi/3.0);
          when O3 =>
-            return -Scale * Sin (5.0 * Pi/6.0) - Scale_IO_Default * Sin (2.0 * Pi/3.0);
+            return Y(R3, Scale, Scale_IO) - Scale_IO * Sin (2.0 * Pi/3.0);
          when O4 =>
-            return -Scale * Sin (-5.0 * Pi/6.0) - Scale_IO_Default * Sin (Pi);
+            return Y(R4, Scale, Scale_IO) - Scale_IO * Sin (Pi);
          when O5 =>
-            return Scale - Scale_IO_Default * Sin (-2.0 * Pi/3.0);
+            return Y(R5, Scale, Scale_IO) - Scale_IO * Sin (-2.0 * Pi/3.0);
          when O6 =>
-            return -Scale * Sin (-Pi/6.0) - Scale_IO_Default * Sin (-Pi/3.0);
+            return Y(R6, Scale, Scale_IO) - Scale_IO * Sin (-Pi/3.0);
       end case;
    end;
 

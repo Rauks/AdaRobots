@@ -25,8 +25,8 @@ package Site is
    function Way_Out (To: in Output_Places) return Ring_Places;
    function Opposite (Place: in Ring_Places) return Ring_Places;
 
-   function X (Place: in Place_Names; Scale: Float := Scale_Default) return Float;
-   function Y (Place: in Place_Names; Scale: Float := Scale_Default) return Float;
+   function X (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float;
+   function Y (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float;
 
    protected Safely is
       procedure Create_Window;
