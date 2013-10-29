@@ -8,7 +8,7 @@ package Robot is
    Speed: constant Float := 75.0;
    Dt: constant Duration := 0.05;
 
-   task type Object (Color: Color_Type) is
+   task type Object (Color: Color_Type := White) is
       entry Go (From: in Site.Input_Places; To: in Site.Output_Places);
       entry Shutdown;
    end Object;
