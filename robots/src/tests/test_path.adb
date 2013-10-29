@@ -38,7 +38,4 @@ begin
    Adagraph.Display_Text (300, 100, "Distance AB : " & Float'Image(Segment_Length(P, 1)) , Hue => Light_Blue);
 
    Draw(P);
-
-   R.Follow(P);
-   R.Shutdown;
 end;
