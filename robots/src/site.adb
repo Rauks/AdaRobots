@@ -94,7 +94,7 @@ package body Site is
       end case;
    end;
 
-   function X (Place: in Ring_Places; Scale: Float := Def_Scale) return Float is
+   function X (Place: in Ring_Places; Scale: Float := Scale_Default) return Float is
    begin
       case Place is
          when R1 =>
@@ -112,7 +112,7 @@ package body Site is
       end case;
    end;
 
-   function Y (Place: in Ring_Places; Scale: Float := Def_Scale) return Float is
+   function Y (Place: in Ring_Places; Scale: Float := Scale_Default) return Float is
    begin
       case Place is
          when R1 =>
@@ -135,7 +135,7 @@ package body Site is
          X_Max, Y_Max: Integer;
          X_Char, Y_Char: Integer;
       begin
-         Adagraph.Create_Sized_Graph_Window(2 * Integer(Center_X), 2 * Integer(Center_Y), X_max, Y_Max, X_Char, Y_Char);
+         Adagraph.Create_Sized_Graph_Window(2 * Integer(Windows_Center_X), 2 * Integer(Windows_Center_Y), X_max, Y_Max, X_Char, Y_Char);
          Adagraph.Set_Window_Title("Robots");
       end;
 
@@ -154,11 +154,11 @@ package body Site is
          Angle: Float := 0.0;
          AngleT: Float := 0.0;
          Was_X, Was_Y: Integer := 0;
-         L: Float := Def_Scale - RouteDelta*Sqrt(3.0);
+         L: Float := Scale_Default - RouteDelta*Sqrt(3.0);
       begin
          for i in 1..6 loop
-            Adagraph.Goto_XY(X => Integer(Center_X + RouteDelta*Cos(AngleT)),
-                             Y => Integer(Center_Y + RouteDelta*Sin(AngleT)));
+            Adagraph.Goto_XY(X => Integer(Windows_Center_X + RouteDelta*Cos(AngleT)),
+                             Y => Integer(Windows_Center_Y + RouteDelta*Sin(AngleT)));
             Angle := AngleT - Pi/6.0;
             for j in 1..3 loop
                Adagraph.Draw_To(X   => Adagraph.Where_X + Integer(L*Cos(Angle)),
@@ -181,19 +181,24 @@ package body Site is
          end loop;
       end;
 
-      procedure Draw_Path (P: in Path.Object) is
+      procedure Draw_Path (P: in Path.Object; Color: in Color_Type) is
       begin
-         null;
+         Path.Draw(Path  => P,
+                   Color => Color);
       end;
 
-      procedure Draw_Robot (X: in Integer; Y: in Integer; Hue: in Color_Type) is
+      procedure Draw_Robot (X: in Integer; Y: in Integer; Color: in Color_Type) is
       begin
-         null;
+         Adagraph.Draw_Circle(X      => X,
+                              Y      => Y,
+                              Radius => Integer(Robot_Radius),
+                              Hue    => Color,
+                              Filled => Fill);
       end;
 
       procedure Hide_Robot (X: in Integer; Y: in Integer) is
       begin
-         null;
+         Draw_Robot(X, Y, Black);
       end;
    end Safely;
 end Site;

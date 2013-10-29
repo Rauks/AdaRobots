@@ -4,10 +4,11 @@ with Path;
 use Adagraph, Path;
 
 package Site is
-   Def_Scale: constant Float := 200.0;
-   Center_X: constant Float := 400.0;
-   Center_Y: constant Float := 300.0;
+   Scale_Default: constant Float := 200.0;
+   Windows_Center_X: constant Float := 400.0;
+   Windows_Center_Y: constant Float := 300.0;
    Site_Color: constant Color_Type := White;
+   Robot_Radius: constant Float := 7.0;
 
    type Place_Names is (I1, I2, I3, I4, I5, I6,
                         O1, O2, O3, O4, O5, O6,
@@ -23,16 +24,16 @@ package Site is
    function Way_Out (To: in Output_Places) return Ring_Places;
    function Opposite (Place: in Ring_Places) return Ring_Places;
 
-   function X (Place: in Ring_Places; Scale: Float := Def_Scale) return Float;
-   function Y (Place: in Ring_Places; Scale: Float := Def_Scale) return Float;
+   function X (Place: in Ring_Places; Scale: Float := Scale_Default) return Float;
+   function Y (Place: in Ring_Places; Scale: Float := Scale_Default) return Float;
 
    protected Safely is
       procedure Create_Window;
       procedure Clear_Window;
       procedure Destroy_Window;
       procedure Draw_Site;
-      procedure Draw_Path (P: in Path.Object);
-      procedure Draw_Robot (X: in Integer; Y: in Integer; Hue: Color_Type);
+      procedure Draw_Path (P: in Path.Object; Color: in Color_Type);
+      procedure Draw_Robot (X: in Integer; Y: in Integer; Color: Color_Type);
       procedure Hide_Robot (X: in Integer; Y: in Integer);
    end Safely;
 end Site;
