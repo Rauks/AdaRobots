@@ -119,92 +119,106 @@ package body Site is
       return P;
    end;
 
-   function X (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
+   function X_Uncentered (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
+      Value: Float;
    begin
       case Place is
          when C =>
-            return 0.0;
+            Value := 0.0;
          when R1 =>
-            return Scale * Cos (Pi/6.0);
+            Value := Scale * Cos (Pi/6.0);
          when R2 =>
-            return Scale * Cos (Pi/2.0);
+            Value := Scale * Cos (Pi/2.0);
          when R3 =>
-            return Scale * Cos (5.0 * Pi/6.0);
+            Value := Scale * Cos (5.0 * Pi/6.0);
          when R4 =>
-            return Scale * Cos (-5.0 * Pi/6.0);
+            Value := Scale * Cos (-5.0 * Pi/6.0);
          when R5 =>
-            return Scale * Cos (-Pi/2.0);
+            Value := Scale * Cos (-Pi/2.0);
          when R6 =>
-            return Scale * Cos (-Pi/6.0);
+            Value := Scale * Cos (-Pi/6.0);
          when I1 =>
-            return X(R1, Scale, Scale_IO) + Scale_IO * Cos (Pi/3.0);
+            Value := X_Uncentered(R1, Scale, Scale_IO) + Scale_IO * Cos (Pi/3.0);
          when I2 =>
-            return X(R2, Scale, Scale_IO) + Scale_IO * Cos (2.0 * Pi/3.0);
+            Value := X_Uncentered(R2, Scale, Scale_IO) + Scale_IO * Cos (2.0 * Pi/3.0);
          when I3 =>
-            return X(R3, Scale, Scale_IO) + Scale_IO * Cos (Pi);
+            Value := X_Uncentered(R3, Scale, Scale_IO) + Scale_IO * Cos (Pi);
          when I4 =>
-            return X(R4, Scale, Scale_IO) + Scale_IO * Cos (-2.0 * Pi/3.0);
+            Value := X_Uncentered(R4, Scale, Scale_IO) + Scale_IO * Cos (-2.0 * Pi/3.0);
          when I5 =>
-            return X(R5, Scale, Scale_IO) + Scale_IO * Cos (-Pi/3.0);
+            Value := X_Uncentered(R5, Scale, Scale_IO) + Scale_IO * Cos (-Pi/3.0);
          when I6 =>
-            return X(R6, Scale, Scale_IO) + Scale_IO * Cos (0.0);
+            Value := X_Uncentered(R6, Scale, Scale_IO) + Scale_IO * Cos (0.0);
          when O1 =>
-            return X(R1, Scale, Scale_IO) + Scale_IO * Cos (0.0);
+            Value := X_Uncentered(R1, Scale, Scale_IO) + Scale_IO * Cos (0.0);
          when O2 =>
-            return X(R2, Scale, Scale_IO) + Scale_IO * Cos (Pi/3.0);
+            Value := X_Uncentered(R2, Scale, Scale_IO) + Scale_IO * Cos (Pi/3.0);
          when O3 =>
-            return X(R3, Scale, Scale_IO) + Scale_IO * Cos (2.0 * Pi/3.0);
+            Value := X_Uncentered(R3, Scale, Scale_IO) + Scale_IO * Cos (2.0 * Pi/3.0);
          when O4 =>
-            return X(R4, Scale, Scale_IO) + Scale_IO * Cos (Pi);
+            Value := X_Uncentered(R4, Scale, Scale_IO) + Scale_IO * Cos (Pi);
          when O5 =>
-            return X(R5, Scale, Scale_IO) + Scale_IO * Cos (-2.0 * Pi/3.0);
+            Value := X_Uncentered(R5, Scale, Scale_IO) + Scale_IO * Cos (-2.0 * Pi/3.0);
          when O6 =>
-            return X(R6, Scale, Scale_IO) + Scale_IO * Cos (-Pi/3.0);
+            Value := X_Uncentered(R6, Scale, Scale_IO) + Scale_IO * Cos (-Pi/3.0);
       end case;
+      return Value;
+   end;
+
+   function Y_Uncentered (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
+      Value: Float;
+   begin
+      case Place is
+         when C =>
+            Value := 0.0;
+         when R1 =>
+            Value := -Scale * Sin (Pi/6.0);
+         when R2 =>
+            Value := -Scale * Sin (Pi/2.0);
+         when R3 =>
+            Value := -Scale * Sin (5.0 * Pi/6.0);
+         when R4 =>
+            Value := -Scale * Sin (-5.0 * Pi/6.0);
+         when R5 =>
+            Value := -Scale * Sin (-Pi/2.0);
+         when R6 =>
+            Value := -Scale * Sin (-Pi/6.0);
+         when I1 =>
+            Value := Y_Uncentered(R1, Scale, Scale_IO) - Scale_IO * Sin (Pi/3.0);
+         when I2 =>
+            Value := Y_Uncentered(R2, Scale, Scale_IO) - Scale_IO * Sin (2.0 * Pi/3.0);
+         when I3 =>
+            Value := Y_Uncentered(R3, Scale, Scale_IO) - Scale_IO * Sin (Pi);
+         when I4 =>
+            Value := Y_Uncentered(R4, Scale, Scale_IO) - Scale_IO * Sin (-2.0 * Pi/3.0);
+         when I5 =>
+            Value := Y_Uncentered(R5, Scale, Scale_IO) - Scale_IO * Sin (-Pi/3.0);
+         when I6 =>
+            Value := Y_Uncentered(R6, Scale, Scale_IO) - Scale_IO * Sin (0.0);
+         when O1 =>
+            Value := Y_Uncentered(R1, Scale, Scale_IO) - Scale_IO * Sin (0.0);
+         when O2 =>
+            Value := Y_Uncentered(R2, Scale, Scale_IO) - Scale_IO_Default * Sin (Pi/3.0);
+         when O3 =>
+            Value := Y_Uncentered(R3, Scale, Scale_IO) - Scale_IO * Sin (2.0 * Pi/3.0);
+         when O4 =>
+            Value := Y_Uncentered(R4, Scale, Scale_IO) - Scale_IO * Sin (Pi);
+         when O5 =>
+            Value := Y_Uncentered(R5, Scale, Scale_IO) - Scale_IO * Sin (-2.0 * Pi/3.0);
+         when O6 =>
+            Value := Y_Uncentered(R6, Scale, Scale_IO) - Scale_IO * Sin (-Pi/3.0);
+      end case;
+      return Value;
+   end;
+
+   function X (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
+   begin
+      return Windows_Center_X + X_Uncentered(Place, Scale, Scale_IO);
    end;
 
    function Y (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
    begin
-      case Place is
-         when C =>
-            return 0.0;
-         when R1 =>
-            return -Scale * Sin (Pi/6.0);
-         when R2 =>
-            return -Scale * Sin (Pi/2.0);
-         when R3 =>
-            return -Scale * Sin (5.0 * Pi/6.0);
-         when R4 =>
-            return -Scale * Sin (-5.0 * Pi/6.0);
-         when R5 =>
-            return -Scale * Sin (-Pi/2.0);
-         when R6 =>
-            return -Scale * Sin (-Pi/6.0);
-         when I1 =>
-            return Y(R1, Scale, Scale_IO) - Scale_IO * Sin (Pi/3.0);
-         when I2 =>
-            return Y(R2, Scale, Scale_IO) - Scale_IO * Sin (2.0 * Pi/3.0);
-         when I3 =>
-            return Y(R3, Scale, Scale_IO) - Scale_IO * Sin (Pi);
-         when I4 =>
-            return Y(R4, Scale, Scale_IO) - Scale_IO * Sin (-2.0 * Pi/3.0);
-         when I5 =>
-            return Y(R5, Scale, Scale_IO) - Scale_IO * Sin (-Pi/3.0);
-         when I6 =>
-            return Y(R6, Scale, Scale_IO) - Scale_IO * Sin (0.0);
-         when O1 =>
-            return Y(R1, Scale, Scale_IO) - Scale_IO * Sin (0.0);
-         when O2 =>
-            return Y(R2, Scale, Scale_IO) - Scale_IO_Default * Sin (Pi/3.0);
-         when O3 =>
-            return Y(R3, Scale, Scale_IO) - Scale_IO * Sin (2.0 * Pi/3.0);
-         when O4 =>
-            return Y(R4, Scale, Scale_IO) - Scale_IO * Sin (Pi);
-         when O5 =>
-            return Y(R5, Scale, Scale_IO) - Scale_IO * Sin (-2.0 * Pi/3.0);
-         when O6 =>
-            return Y(R6, Scale, Scale_IO) - Scale_IO * Sin (-Pi/3.0);
-      end case;
+      return Windows_Center_Y + Y_Uncentered(Place, Scale, Scale_IO);
    end;
 
    protected body Safely is
@@ -261,34 +275,34 @@ package body Site is
       procedure Draw_Places is
       begin
          for Place in Ring_Places loop
-            Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
-                                 Y      => Integer(Windows_Center_Y + Y(Place)),
+            Adagraph.Draw_Circle(X      => Integer(X(Place)),
+                                 Y      => Integer(Y(Place)),
                                  Radius => Integer(Place_Radius),
                                  Hue    => Place_R_Color,
                                  Filled => No_Fill);
          end loop;
-         Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(C)),
-                              Y      => Integer(Windows_Center_Y + Y(C)),
+         Adagraph.Draw_Circle(X      => Integer(X(C)),
+                              Y      => Integer(Y(C)),
                               Radius => Integer(Place_Radius),
                               Hue    => Place_C_Color,
                               Filled => No_Fill);
          for Place in Input_Places loop
-            Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
-                                 Y      => Integer(Windows_Center_Y + Y(Place)),
+            Adagraph.Draw_Circle(X      => Integer(X(Place)),
+                                 Y      => Integer(Y(Place)),
                                  Radius => Integer(Place_Radius),
                                  Hue    => Place_I_Color,
                                  Filled => No_Fill);
          end loop;
          for Place in Output_Places loop
-            Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
-                                 Y      => Integer(Windows_Center_Y + Y(Place)),
+            Adagraph.Draw_Circle(X      => Integer(X(Place)),
+                                 Y      => Integer(Y(Place)),
                                  Radius => Integer(Place_Radius),
                                  Hue    => Place_O_Color,
                                  Filled => No_Fill);
          end loop;
          for Place in Place_Names loop
-            Adagraph.Display_Text (X    => -8 + Integer(Windows_Center_X + X(Place)),
-                                   Y    => 5 + Integer(Windows_Center_Y + Y(Place)),
+            Adagraph.Display_Text (X    => -8 + Integer(X(Place)),
+                                   Y    => 5 + Integer(Y(Place)),
                                    Text => Place_Names'Image(Place),
                                    Hue  => Place_Name_Color);
          end loop;
