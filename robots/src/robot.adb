@@ -14,6 +14,8 @@ package body Robot is
                   Ready := False;
                   Trajectory.Open(RobotRoute, From, To, Speed);
                end;
+               Site.Safely.Draw_Path(P     => Trajectory.Route(RobotRoute),
+                                     Color => Color);
                Site.Safely.Draw_Robot(X     => Integer(Trajectory.X(RobotRoute)),
                                       Y     => Integer(Trajectory.Y(RobotRoute)),
                                       Color => Color);
