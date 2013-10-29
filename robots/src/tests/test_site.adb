@@ -7,4 +7,5 @@ begin
    Safely.Create_Window;
    Safely.Clear_Window;
    Safely.Draw_Site;
+   Safely.Draw_Places;
 end;

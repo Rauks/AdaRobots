@@ -94,9 +94,11 @@ package body Site is
       end case;
    end;
 
-   function X (Place: in Ring_Places; Scale: Float := Scale_Default) return Float is
+   function X (Place: in Place_Names; Scale: Float := Scale_Default) return Float is
    begin
       case Place is
+         when C =>
+            return 0.0;
          when R1 =>
             return Scale * Cos (Pi/6.0);
          when R2 =>
@@ -109,24 +111,74 @@ package body Site is
             return 0.0;
          when R6 =>
             return Scale * Cos (-Pi/6.0);
+         when I1 =>
+            return Scale * Cos (Pi/6.0) + Scale_IO_Default * Cos (Pi/3.0);
+         when I2 =>
+            return 0.0 + Scale_IO_Default * Cos (2.0 * Pi/3.0);
+         when I3 =>
+            return Scale * Cos (5.0 * Pi/6.0) + Scale_IO_Default * Cos (Pi);
+         when I4 =>
+            return Scale * Cos (-5.0 * Pi/6.0) + Scale_IO_Default * Cos (-2.0 * Pi/3.0);
+         when I5 =>
+            return 0.0 + Scale_IO_Default * Cos (-Pi/3.0);
+         when I6 =>
+            return Scale * Cos (-Pi/6.0) + Scale_IO_Default;
+         when O1 =>
+            return Scale * Cos (Pi/6.0) + Scale_IO_Default;
+         when O2 =>
+            return 0.0 + Scale_IO_Default * Cos (Pi/3.0);
+         when O3 =>
+            return Scale * Cos (5.0 * Pi/6.0) + Scale_IO_Default * Cos (2.0 * Pi/3.0);
+         when O4 =>
+            return Scale * Cos (-5.0 * Pi/6.0) + Scale_IO_Default * Cos (Pi);
+         when O5 =>
+            return 0.0 + Scale_IO_Default * Cos (-2.0 * Pi/3.0);
+         when O6 =>
+            return Scale * Cos (-Pi/6.0) + Scale_IO_Default * Cos (-Pi/3.0);
       end case;
    end;
 
-   function Y (Place: in Ring_Places; Scale: Float := Scale_Default) return Float is
+   function Y (Place: in Place_Names; Scale: Float := Scale_Default) return Float is
    begin
       case Place is
+         when C =>
+            return 0.0;
          when R1 =>
-            return Scale * Sin (Pi/6.0);
+            return -Scale * Sin (Pi/6.0);
          when R2 =>
-            return Scale;
-         when R3 =>
-            return Scale * Sin (5.0 * Pi/6.0);
-         when R4 =>
-            return Scale * Sin (-5.0 * Pi/6.0);
-         when R5 =>
             return -Scale;
+         when R3 =>
+            return -Scale * Sin (5.0 * Pi/6.0);
+         when R4 =>
+            return -Scale * Sin (-5.0 * Pi/6.0);
+         when R5 =>
+            return Scale;
          when R6 =>
-            return Scale * Sin (-Pi/6.0);
+            return -Scale * Sin (-Pi/6.0);
+         when I1 =>
+            return -Scale * Sin (Pi/6.0) - Scale_IO_Default * Sin (Pi/3.0);
+         when I2 =>
+            return -Scale - Scale_IO_Default * Sin (2.0 * Pi/3.0);
+         when I3 =>
+            return -Scale * Sin (5.0 * Pi/6.0) - Scale_IO_Default * Sin (Pi);
+         when I4 =>
+            return -Scale * Sin (-5.0 * Pi/6.0) - Scale_IO_Default * Sin (-2.0 * Pi/3.0);
+         when I5 =>
+            return Scale - Scale_IO_Default * Sin (-Pi/3.0);
+         when I6 =>
+            return -Scale * Sin (-Pi/6.0);
+         when O1 =>
+            return -Scale * Sin (Pi/6.0);
+         when O2 =>
+            return -Scale - Scale_IO_Default * Sin (Pi/3.0);
+         when O3 =>
+            return -Scale * Sin (5.0 * Pi/6.0) - Scale_IO_Default * Sin (2.0 * Pi/3.0);
+         when O4 =>
+            return -Scale * Sin (-5.0 * Pi/6.0) - Scale_IO_Default * Sin (Pi);
+         when O5 =>
+            return Scale - Scale_IO_Default * Sin (-2.0 * Pi/3.0);
+         when O6 =>
+            return -Scale * Sin (-Pi/6.0) - Scale_IO_Default * Sin (-Pi/3.0);
       end case;
    end;
 
@@ -178,6 +230,36 @@ package body Site is
                Angle := Angle + Pi/1.5;
             end loop;
             AngleT := AngleT + Pi/3.0;
+         end loop;
+      end;
+
+      procedure Draw_Places is
+      begin
+         for Place in Ring_Places loop
+            Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
+                                 Y      => Integer(Windows_Center_Y + Y(Place)),
+                                 Radius => 10,
+                                 Hue    => Yellow,
+                                 Filled => No_Fill);
+         end loop;
+         Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(C)),
+                              Y      => Integer(Windows_Center_Y + Y(C)),
+                              Radius => 10,
+                              Hue    => Yellow,
+                              Filled => No_Fill);
+         for Place in Input_Places loop
+            Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
+                                 Y      => Integer(Windows_Center_Y + Y(Place)),
+                                 Radius => 10,
+                                 Hue    => Green,
+                                 Filled => No_Fill);
+         end loop;
+         for Place in Output_Places loop
+            Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
+                                 Y      => Integer(Windows_Center_Y + Y(Place)),
+                                 Radius => 10,
+                                 Hue    => Red,
+                                 Filled => No_Fill);
          end loop;
       end;
 

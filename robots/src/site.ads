@@ -5,6 +5,7 @@ use Adagraph, Path;
 
 package Site is
    Scale_Default: constant Float := 200.0;
+   Scale_IO_Default: constant Float := 40.0;
    Windows_Center_X: constant Float := 400.0;
    Windows_Center_Y: constant Float := 300.0;
    Site_Color: constant Color_Type := White;
@@ -24,14 +25,15 @@ package Site is
    function Way_Out (To: in Output_Places) return Ring_Places;
    function Opposite (Place: in Ring_Places) return Ring_Places;
 
-   function X (Place: in Ring_Places; Scale: Float := Scale_Default) return Float;
-   function Y (Place: in Ring_Places; Scale: Float := Scale_Default) return Float;
+   function X (Place: in Place_Names; Scale: Float := Scale_Default) return Float;
+   function Y (Place: in Place_Names; Scale: Float := Scale_Default) return Float;
 
    protected Safely is
       procedure Create_Window;
       procedure Clear_Window;
       procedure Destroy_Window;
       procedure Draw_Site;
+      procedure Draw_Places;
       procedure Draw_Path (P: in Path.Object; Color: in Color_Type);
       procedure Draw_Robot (X: in Integer; Y: in Integer; Color: Color_Type);
       procedure Hide_Robot (X: in Integer; Y: in Integer);
