@@ -238,29 +238,36 @@ package body Site is
          for Place in Ring_Places loop
             Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
                                  Y      => Integer(Windows_Center_Y + Y(Place)),
-                                 Radius => 10,
-                                 Hue    => Yellow,
+                                 Radius => Integer(Place_Radius),
+                                 Hue    => Place_R_Color,
                                  Filled => No_Fill);
          end loop;
          Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(C)),
                               Y      => Integer(Windows_Center_Y + Y(C)),
-                              Radius => 10,
-                              Hue    => Yellow,
+                              Radius => Integer(Place_Radius),
+                              Hue    => Place_C_Color,
                               Filled => No_Fill);
          for Place in Input_Places loop
             Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
                                  Y      => Integer(Windows_Center_Y + Y(Place)),
-                                 Radius => 10,
-                                 Hue    => Green,
+                                 Radius => Integer(Place_Radius),
+                                 Hue    => Place_I_Color,
                                  Filled => No_Fill);
          end loop;
          for Place in Output_Places loop
             Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + X(Place)),
                                  Y      => Integer(Windows_Center_Y + Y(Place)),
-                                 Radius => 10,
-                                 Hue    => Red,
+                                 Radius => Integer(Place_Radius),
+                                 Hue    => Place_O_Color,
                                  Filled => No_Fill);
          end loop;
+         for Place in Place_Names loop
+            Adagraph.Display_Text (X    => -8 + Integer(Windows_Center_X + X(Place)),
+                                   Y    => 5 + Integer(Windows_Center_Y + Y(Place)),
+                                   Text => Place_Names'Image(Place),
+                                   Hue  => Place_Name_Color);
+         end loop;
+
       end;
 
       procedure Draw_Path (P: in Path.Object; Color: in Color_Type) is

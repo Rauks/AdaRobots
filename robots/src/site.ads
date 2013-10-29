@@ -6,10 +6,20 @@ use Adagraph, Path;
 package Site is
    Scale_Default: constant Float := 200.0;
    Scale_IO_Default: constant Float := 40.0;
+
    Windows_Center_X: constant Float := 400.0;
    Windows_Center_Y: constant Float := 300.0;
+
    Site_Color: constant Color_Type := White;
+
    Robot_Radius: constant Float := 7.0;
+
+   Place_R_Color: constant Color_Type := Yellow;
+   Place_C_Color: constant Color_Type := Yellow;
+   Place_I_Color: constant Color_Type := Green;
+   Place_O_Color: constant Color_Type := Red;
+   Place_Name_Color: constant Color_Type := White;
+   Place_Radius: constant Float := 12.0;
 
    type Place_Names is (I1, I2, I3, I4, I5, I6,
                         O1, O2, O3, O4, O5, O6,
