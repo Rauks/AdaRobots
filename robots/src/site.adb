@@ -94,6 +94,31 @@ package body Site is
       end case;
    end;
 
+   function To_Point(Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Path.Point is
+   begin
+      return Path.Point'(X => X(Place, Scale, Scale_IO),
+                         Y => Y(Place, Scale, Scale_IO));
+   end;
+
+   function Route(From: in Input_Places; To: in Output_Places) return Path.Object is
+      P: Path.Object;
+      In_Ring: Ring_Places := Way_In(From);
+      Out_Ring: Ring_Places := Way_Out(To);
+   begin
+      Path.Add(P, To_Point(From));
+      Path.Add(P, To_Point(In_Ring));
+      if Out_Ring = Opposite(In_Ring) then
+         Path.Add(P, To_Point(C));
+      elsif Out_Ring = Next(Next(In_Ring)) then
+         Path.Add(P, To_Point(Next(In_Ring)));
+      elsif Out_Ring = Previous(Previous(In_Ring)) then
+         Path.Add(P, To_Point(Previous(In_Ring)));
+      end if;
+      Path.Add(P, To_Point(Out_Ring));
+      Path.Add(P, To_Point(To));
+      return P;
+   end;
+
    function X (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
    begin
       case Place is

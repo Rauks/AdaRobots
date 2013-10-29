@@ -35,8 +35,7 @@ package Site is
    function Way_Out (To: in Output_Places) return Ring_Places;
    function Opposite (Place: in Ring_Places) return Ring_Places;
 
-   function X (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float;
-   function Y (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float;
+   function Route(From: in Input_Places; To: in Output_Places) return Path.Object;
 
    protected Safely is
       procedure Create_Window;
@@ -48,4 +47,10 @@ package Site is
       procedure Draw_Robot (X: in Integer; Y: in Integer; Color: Color_Type);
       procedure Hide_Robot (X: in Integer; Y: in Integer);
    end Safely;
+
+private
+   function To_Point(Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Path.Point;
+
+   function X (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float;
+   function Y (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float;
 end Site;
