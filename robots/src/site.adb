@@ -4,7 +4,7 @@ with Ada.Numerics.Elementary_Functions;
 use Ada.Numerics, Ada.Numerics.Elementary_Functions;
 
 package body Site is
-   function Way_In (From: Input_Places) return Ring_Places is
+   function Way_In (From: in Input_Places) return Ring_Places is
    begin
       case From is
          when I1 =>
@@ -22,7 +22,7 @@ package body Site is
       end case;
    end;
 
-   function Next (Place: Ring_Places) return Ring_Places is
+   function Next (Place: in Ring_Places) return Ring_Places is
    begin
       case Place is
          when R1 =>
@@ -40,7 +40,7 @@ package body Site is
       end case;
    end;
 
-   function Previous (Place: Ring_Places) return Ring_Places is
+   function Previous (Place: in Ring_Places) return Ring_Places is
    begin
       case Place is
          when R1 =>
@@ -58,7 +58,7 @@ package body Site is
       end case;
    end;
 
-   function Way_Out (To: Output_Places) return Ring_Places is
+   function Way_Out (To: in Output_Places) return Ring_Places is
    begin
       case To is
          when O1 =>
@@ -76,7 +76,7 @@ package body Site is
       end case;
    end;
 
-   function Opposite (Place: Ring_Places) return Ring_Places is
+   function Opposite (Place: in Ring_Places) return Ring_Places is
    begin
       case Place is
          when R1 =>
@@ -94,7 +94,7 @@ package body Site is
       end case;
    end;
 
-   function X (Place: Ring_Places) return Float is
+   function X (Place: in Ring_Places; Scale: Float := Def_Scale) return Float is
    begin
       case Place is
          when R1 =>
@@ -112,7 +112,7 @@ package body Site is
       end case;
    end;
 
-   function Y (Place: Ring_Places) return Float is
+   function Y (Place: in Ring_Places; Scale: Float := Def_Scale) return Float is
    begin
       case Place is
          when R1 =>
@@ -130,13 +130,12 @@ package body Site is
       end case;
    end;
 
-
    protected body Safely is
       procedure Create_Window is
          X_Max, Y_Max: Integer;
          X_Char, Y_Char: Integer;
       begin
-         Adagraph.Create_Sized_Graph_Window(800, 600, X_max, Y_Max, X_Char, Y_Char);
+         Adagraph.Create_Sized_Graph_Window(2 * Integer(Center_X), 2 * Integer(Center_Y), X_max, Y_Max, X_Char, Y_Char);
          Adagraph.Set_Window_Title("Robots");
       end;
 
@@ -151,15 +150,35 @@ package body Site is
       end;
 
       procedure Draw_Site is
+         RouteDelta: Float := 19.0;
+         Angle: Float := 0.0;
+         AngleT: Float := 0.0;
+         Was_X, Was_Y: Integer := 0;
+         L: Float := Def_Scale - RouteDelta*Sqrt(3.0);
       begin
-         for Place in Ring_Places loop
-            Adagraph.Draw_Circle(X      => 400 + Integer(X(Place)),
-                                 Y      => 300 + Integer(Y(Place)),
-                                 Radius => 10,
-                                 Hue    => White,
-                                 Filled => Fill);
+         for i in 1..6 loop
+            Adagraph.Goto_XY(X => Integer(Center_X + RouteDelta*Cos(AngleT)),
+                             Y => Integer(Center_Y + RouteDelta*Sin(AngleT)));
+            Angle := AngleT - Pi/6.0;
+            for j in 1..3 loop
+               Adagraph.Draw_To(X   => Adagraph.Where_X + Integer(L*Cos(Angle)),
+                                Y   => Adagraph.Where_Y + Integer(L*Sin(Angle)),
+                                Hue => Site_Color);
+               if j = 1 then
+                  Was_X := Adagraph.Where_X;
+                  Was_Y := Adagraph.Where_Y;
+                  Adagraph.Goto_XY(X => Adagraph.Where_X + Integer(RouteDelta*Cos(Angle + Pi/6.0)),
+                                   Y => Adagraph.Where_Y + Integer(RouteDelta*Sin(Angle + Pi/6.0)));
+                  Adagraph.Draw_To(X   => Adagraph.Where_X + Integer(L*Cos(Angle + Pi/1.5)),
+                                   Y   => Adagraph.Where_Y + Integer(L*Sin(Angle + Pi/1.5)),
+                                   Hue => Site_Color);
+                  Adagraph.Goto_XY(X => Was_X,
+                                   Y => Was_Y);
+               end if;
+               Angle := Angle + Pi/1.5;
+            end loop;
+            AngleT := AngleT + Pi/3.0;
          end loop;
-
       end;
 
       procedure Draw_Path (P: in Path.Object) is
