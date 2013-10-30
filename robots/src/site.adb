@@ -1,7 +1,9 @@
 with Ada.Numerics;
+with Ada.Text_IO;
 with Ada.Numerics.Elementary_Functions;
+with Site.Places_Path;
 
-use Ada.Numerics, Ada.Numerics.Elementary_Functions;
+use Ada.Numerics, Ada.Text_IO, Ada.Numerics.Elementary_Functions, Site.Places_Path;
 
 package body Site is
    function Way_In (From: in Input_Places) return Ring_Places is
@@ -104,18 +106,14 @@ package body Site is
       P: Path.Object;
       In_Ring: Ring_Places := Way_In(From);
       Out_Ring: Ring_Places := Way_Out(To);
+      C: Places_Path.Cursor;
    begin
-      Path.Add(P, To_Point(From));
-      Path.Add(P, To_Point(In_Ring));
-      if Out_Ring = Opposite(In_Ring) then
-         Path.Add(P, To_Point(C));
-      elsif Out_Ring = Next(Next(In_Ring)) then
-         Path.Add(P, To_Point(Next(In_Ring)));
-      elsif Out_Ring = Previous(Previous(In_Ring)) then
-         Path.Add(P, To_Point(Previous(In_Ring)));
-      end if;
-      Path.Add(P, To_Point(Out_Ring));
-      Path.Add(P, To_Point(To));
+      C := Places_Path.Open(From => From,
+                            To   => To);
+      while not Places_Path.At_End(C) loop
+         Add(P, To_Point(Places_Path.Value(C)));
+         Next(C);
+      end loop;
       return P;
    end;
 

@@ -2,7 +2,7 @@ package body Site.Places_Path is
    function Open (From: in Place_Names; To: in Place_Names) return Cursor is
       In_Ring: Ring_Places := Way_In(From);
       Out_Ring: Ring_Places := Way_Out(To);
-      O: Object;
+      O: Object := Void;
    begin
       Add(O, From);
       Add(O, In_Ring);
