@@ -5,6 +5,7 @@ package Site.Places_Path is
    function At_End (O: in Object) return Boolean;
    function Value (O: in Object) return Place_Names;
    procedure Next (O: in out Object);
+   procedure Reset (O: in out Object);
    procedure Close (O: in out Object);
 
    Illegal: exception;

@@ -57,10 +57,14 @@ package body Site.Places_Path is
       end if;
    end;
 
-   procedure Free is new Ada.Unchecked_Deallocation (Object => Cell,
-                                                     Name   => Ref);
+   procedure Reset (O: in out Object) is
+   begin
+      O.C := Cursor(O.Head);
+   end;
 
    procedure Close (O: in out Object) is
+      procedure Free is new Ada.Unchecked_Deallocation (Object => Cell,
+                                                        Name   => Ref);
       Temp: Ref;
    begin
       O.C := null;
