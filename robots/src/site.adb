@@ -106,14 +106,15 @@ package body Site is
       P: Path.Object;
       In_Ring: Ring_Places := Way_In(From);
       Out_Ring: Ring_Places := Way_Out(To);
-      C: Places_Path.Cursor;
+      PP: Places_Path.Object;
    begin
-      C := Places_Path.Open(From => From,
-                            To   => To);
-      while not Places_Path.At_End(C) loop
-         Add(P, To_Point(Places_Path.Value(C)));
-         Next(C);
+      PP := Places_Path.Open(From => From,
+                             To   => To);
+      while not Places_Path.At_End(PP) loop
+         Add(P, To_Point(Places_Path.Value(PP)));
+         Next(PP);
       end loop;
+      Places_Path.Close(PP);
       return P;
    end;
 

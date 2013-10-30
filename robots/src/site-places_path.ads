@@ -1,10 +1,11 @@
 package Site.Places_Path is
-   type Cursor is private;
+   type Object is private;
 
-   function Open (From: in Place_Names; To: in Place_Names) return Cursor;
-   function At_End (C: in Cursor) return Boolean;
-   function Value (C: in Cursor) return Place_Names;
-   procedure Next (C: in out Cursor);
+   function Open (From: in Place_Names; To: in Place_Names) return Object;
+   function At_End (O: in Object) return Boolean;
+   function Value (O: in Object) return Place_Names;
+   procedure Next (O: in out Object);
+   procedure Close (O: in out Object);
 
    Illegal: exception;
 private
@@ -14,11 +15,12 @@ private
       Value: Place_Names;
       Next: Ref;
    end record;
+   type Cursor is new Ref;
    type Object is record
       Head, Tail: Ref;
+      C: Cursor;
    end record;
-   Void: constant Object := (null, null);
+   Void: constant Object := (null, null, null);
    procedure Add (O: in out Object; Place: in Place_Names);
 
-   type Cursor is new Ref;
 end Site.Places_Path;

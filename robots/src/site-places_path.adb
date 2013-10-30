@@ -1,5 +1,7 @@
+with Ada.Unchecked_Deallocation;
+
 package body Site.Places_Path is
-   function Open (From: in Place_Names; To: in Place_Names) return Cursor is
+   function Open (From: in Place_Names; To: in Place_Names) return Object is
       In_Ring: Ring_Places := Way_In(From);
       Out_Ring: Ring_Places := Way_Out(To);
       O: Object := Void;
@@ -15,7 +17,8 @@ package body Site.Places_Path is
       end if;
       Add(O, Out_Ring);
       Add(O, To);
-      return Cursor(O.Head);
+      O.C := Cursor(O.Head);
+      return O;
    end;
 
    procedure Add (O: in out Object; Place: in Place_Names) is
@@ -31,27 +34,41 @@ package body Site.Places_Path is
       O.Tail := P;
    end;
 
-   function At_End (C: in Cursor) return Boolean is
+   function At_End (O: in Object) return Boolean is
    begin
-      return C = null;
+      return O.C = null;
    end;
 
-   function Value (C: in Cursor) return Place_Names is
+   function Value (O: in Object) return Place_Names is
    begin
-      if C /= null then
-         return C.Value;
+      if O.C /= null then
+         return O.C.Value;
       else
          raise Illegal;
       end if;
    end;
 
-   procedure Next (C: in out Cursor) is
+   procedure Next (O: in out Object) is
    begin
-      if C /= null then
-         C := Cursor(C.Next);
+      if O.C /= null then
+         O.C := Cursor(O.C.Next);
       else
          raise Illegal;
       end if;
+   end;
+
+   procedure Free is new Ada.Unchecked_Deallocation (Object => Cell,
+                                                     Name   => Ref);
+
+   procedure Close (O: in out Object) is
+      Temp: Ref;
+   begin
+      O.C := null;
+      while O.Head /= null loop
+         Temp := O.Head;
+         O.Head := O.Head.Next;
+         Free(Temp);
+      end loop;
    end;
 
 end Site.Places_Path;
