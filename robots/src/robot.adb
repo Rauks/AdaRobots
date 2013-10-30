@@ -12,7 +12,7 @@ package body Robot is
             when Ready =>
                accept Go (From: in Site.Input_Places; To: in Site.Output_Places) do
                   Ready := False;
-                  Trajectory.Open(RobotRoute, From, To, Speed);
+                  RobotRoute := Trajectory.Open(From, To, Speed);
                end;
                Site.Safely.Draw_Path(P     => Trajectory.Route(RobotRoute),
                                      Color => Color);
