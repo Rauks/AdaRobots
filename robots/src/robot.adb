@@ -3,17 +3,22 @@ with Robot.Trajectory.Safe;
 use Robot.Trajectory.Safe;
 
 package body Robot is
+
    task body Object is
       Ready: Boolean := True;
       RobotRoute: Trajectory.Safe.Safe_Object;
+      F: Site.Input_Places;
+      T: Site.Output_Places;
    begin
       loop
          select
             when Ready =>
                accept Go (From: in Site.Input_Places; To: in Site.Output_Places) do
-                  Ready := False;
-                  RobotRoute := Open(From, To, Speed);
+                     Ready := False;
+                     F := From;
+                     T := To;
                end;
+               RobotRoute := Open(F, T, Speed);
                Site.Safely.Draw_Path(P     => Route(RobotRoute),
                                      Color => Color);
                Site.Safely.Draw_Robot(X     => Integer(X(RobotRoute)),
