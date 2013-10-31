@@ -1,9 +1,8 @@
 with Ada.Numerics;
-with Ada.Text_IO;
 with Ada.Numerics.Elementary_Functions;
 with Site.Places_Path;
 
-use Ada.Numerics, Ada.Text_IO, Ada.Numerics.Elementary_Functions, Site.Places_Path;
+use Ada.Numerics, Ada.Numerics.Elementary_Functions, Site.Places_Path;
 
 package body Site is
    function Way_In (From: in Input_Places) return Ring_Places is
@@ -116,6 +115,11 @@ package body Site is
       end loop;
       Places_Path.Close(PP);
       return P;
+   end;
+
+   function Robot_Intersect (Place: in Place_Names; Robot_X: in Float; Robot_Y: in Float) return Boolean is
+   begin
+      return Place_Radius < Sqrt((Robot_X - X(Place))**2 + (Robot_Y - Y(Place))**2);
    end;
 
    function X_Uncentered (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is

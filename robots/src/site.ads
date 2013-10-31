@@ -37,6 +37,8 @@ package Site is
 
    function Route(From: in Input_Places; To: in Output_Places) return Path.Object;
 
+   function Robot_Intersect (Place: in Place_Names; Robot_X: in Float; Robot_Y: in Float) return Boolean;
+
    protected Safely is
       procedure Create_Window;
       procedure Clear_Window;
