@@ -12,4 +12,5 @@ package Mail_Box is
       Last: Positive := Size;
       Count: Natural := 0;
    end;
+   type Ref is access Object;
 end Mail_Box;
