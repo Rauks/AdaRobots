@@ -15,7 +15,9 @@ package body Site.Places_Path is
       elsif Out_Ring = Previous(Previous(In_Ring)) then
          Add(O, Previous(In_Ring));
       end if;
-      Add(O, Out_Ring);
+      if In_Ring /= Out_Ring then
+         Add(O, Out_Ring);
+      end if;
       Add(O, To);
       O.C := Cursor(O.Head);
       return O;
