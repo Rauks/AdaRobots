@@ -5,7 +5,7 @@ with Site.Places_Path;
 
 use Site, Site.Places_Path;
 
-private package Robot.Trajectory.Safe is
+package Robot.Trajectory.Safe is
    type Safe_Object is new Object with private;
 
    overriding function Open (From: in Site.Input_Places; To: in Site.Output_Places; Speed: in float) return Safe_Object;

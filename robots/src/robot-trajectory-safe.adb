@@ -26,16 +26,18 @@ package body Robot.Trajectory.Safe is
    end;
 
    procedure Next (Trajectory: in out Safe_Object; dt: in Float) is
-      In_Place, In_Place_Again: Boolean;
+      In_Target, In_Target_Again: Boolean;
+      Target: Place_Names := Places_Path.Value(Trajectory.Places);
       Was_X: Float := Trajectory.X;
       Was_Y: Float := Trajectory.Y;
    begin
       Next(Object(Trajectory), dt);
 
-      In_Place := (for some Place in Place_Names'Range => Site.Robot_Intersect(Place, Was_X, Was_Y));
-      In_Place_Again := (for some Place in Place_Names'Range => Site.Robot_Intersect(Place, Trajectory.X, Trajectory.Y));
-      if In_Place and not In_Place_Again then
-         Resources_Pool.Release(Places_Path.Value(Trajectory.Places));
+      In_Target := Site.Robot_Intersect(Target, Was_X, Was_Y);
+      In_Target_Again := Site.Robot_Intersect(Target, Trajectory.X, Trajectory.Y);
+
+      if In_Target and not In_Target_Again then
+         Resources_Pool.Release(Target);
          Places_Path.Next(Trajectory.Places);
       end if;
    end;
