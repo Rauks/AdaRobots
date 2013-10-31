@@ -44,6 +44,7 @@ package Site is
       procedure Clear_Window;
       procedure Destroy_Window;
       procedure Draw_Site;
+      procedure Draw_Place (P: in Place_Names; Color: in Color_Type);
       procedure Draw_Places;
       procedure Draw_Path (P: in Path.Object; Color: in Color_Type);
       procedure Draw_Robot (X: in Integer; Y: in Integer; Color: Color_Type);

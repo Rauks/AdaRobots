@@ -119,7 +119,7 @@ package body Site is
 
    function Robot_Intersect (Place: in Place_Names; Robot_X: in Float; Robot_Y: in Float) return Boolean is
    begin
-      return Place_Radius < Sqrt((Robot_X - X(Place))**2 + (Robot_Y - Y(Place))**2);
+      return Place_Radius > Sqrt((Robot_X - X(Place))**2 + (Robot_Y - Y(Place))**2);
    end;
 
    function X_Uncentered (Place: in Place_Names; Scale: Float := Scale_Default; Scale_IO: Float := Scale_IO_Default) return Float is
@@ -275,41 +275,31 @@ package body Site is
          end loop;
       end;
 
+      procedure Draw_Place (P: in Place_Names; Color: in Color_Type) is
+      begin
+         Adagraph.Draw_Circle(X      => Integer(X(P)),
+                              Y      => Integer(Y(P)),
+                              Radius => Integer(Place_Radius),
+                              Hue    => Color,
+                              Filled => No_Fill);
+         Adagraph.Display_Text (X    => -8 + Integer(X(P)),
+                                Y    => 5 + Integer(Y(P)),
+                                Text => Place_Names'Image(P),
+                                Hue  => Place_Name_Color);
+      end;
+
       procedure Draw_Places is
       begin
          for Place in Ring_Places loop
-            Adagraph.Draw_Circle(X      => Integer(X(Place)),
-                                 Y      => Integer(Y(Place)),
-                                 Radius => Integer(Place_Radius),
-                                 Hue    => Place_R_Color,
-                                 Filled => No_Fill);
+            Draw_Place (Place, Place_R_Color);
          end loop;
-         Adagraph.Draw_Circle(X      => Integer(X(C)),
-                              Y      => Integer(Y(C)),
-                              Radius => Integer(Place_Radius),
-                              Hue    => Place_C_Color,
-                              Filled => No_Fill);
+         Draw_Place (C, Place_C_Color);
          for Place in Input_Places loop
-            Adagraph.Draw_Circle(X      => Integer(X(Place)),
-                                 Y      => Integer(Y(Place)),
-                                 Radius => Integer(Place_Radius),
-                                 Hue    => Place_I_Color,
-                                 Filled => No_Fill);
+            Draw_Place (Place, Place_I_Color);
          end loop;
          for Place in Output_Places loop
-            Adagraph.Draw_Circle(X      => Integer(X(Place)),
-                                 Y      => Integer(Y(Place)),
-                                 Radius => Integer(Place_Radius),
-                                 Hue    => Place_O_Color,
-                                 Filled => No_Fill);
+            Draw_Place (Place, Place_O_Color);
          end loop;
-         for Place in Place_Names loop
-            Adagraph.Display_Text (X    => -8 + Integer(X(Place)),
-                                   Y    => 5 + Integer(Y(Place)),
-                                   Text => Place_Names'Image(Place),
-                                   Hue  => Place_Name_Color);
-         end loop;
-
       end;
 
       procedure Draw_Path (P: in Path.Object; Color: in Color_Type) is
