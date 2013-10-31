@@ -1,10 +1,15 @@
 with Adagraph;
-with Robot;
 with Site;
+with Robot;
 
-use Adagraph, Robot, Site;
+use Adagraph, Site, Robot;
+
+pragma Elaborate (Robot);
 
 package Agency is
+   procedure Handle_Transfert(From: in Place_Names; To: in Place_Names);
+
+private
    type Robot_Ref is access Robot.Object;
    type Robot_Array is array (Robot_Id range <>) of Robot_Ref;
 
@@ -26,8 +31,6 @@ package Agency is
                                     new Robot.Object(Id => 6,
                                                      Mail => Robot.Mail,
                                                      Color => Cyan));
-
-   procedure Handle_Transfert(From: in Place_Names; To: in Place_Names);
 
    task Mission_Listener;
 end Agency;
