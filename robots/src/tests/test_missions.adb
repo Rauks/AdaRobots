@@ -16,12 +16,12 @@ procedure Test_Missions is
    Input_Generator: Mission_Inputs.Generator;
    Output_Generator: Mission_Outputs.Generator;
 
-   R1: Robot_Ref := new Robot.Object(Color => Blue);
-   R2: Robot_Ref := new Robot.Object(Color => Red);
-   R3: Robot_Ref := new Robot.Object(Color => Green);
-   R4: Robot_Ref := new Robot.Object(Color => Yellow);
-   R5: Robot_Ref := new Robot.Object(Color => Brown);
-   R6: Robot_Ref := new Robot.Object(Color => Cyan);
+   R1: Robot_Ref := new Robot.Object(Id => 1, Mail => Robot.Mail, Color => Blue);
+   R2: Robot_Ref := new Robot.Object(Id => 1, Mail => Robot.Mail, Color => Red);
+   R3: Robot_Ref := new Robot.Object(Id => 1, Mail => Robot.Mail, Color => Green);
+   R4: Robot_Ref := new Robot.Object(Id => 1, Mail => Robot.Mail, Color => Yellow);
+   R5: Robot_Ref := new Robot.Object(Id => 1, Mail => Robot.Mail, Color => Brown);
+   R6: Robot_Ref := new Robot.Object(Id => 1, Mail => Robot.Mail, Color => Cyan);
    Rs: Robots := (R1, R2, R3, R4, R5, R6);
 begin
    Safely.Create_Window;
@@ -31,6 +31,7 @@ begin
    Mission_Inputs.Reset(Input_Generator, 345);
    Mission_Outputs.Reset(Output_Generator, 543);
 
+   --Will block after 2 missions (Robots mailbox full)
    while True loop
       for Index in Rs'Range loop
          select
