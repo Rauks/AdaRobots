@@ -1,3 +1,8 @@
+with Ada.Numerics;
+with Ada.Numerics.Elementary_Functions;
+
+use Ada.Numerics, Ada.Numerics.Elementary_Functions;
+
 package body Path is
    function Value (From: Points) return Object is
       Path: Object := Object'(Size => From'Length, Values => From);

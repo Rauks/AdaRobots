@@ -1,8 +1,6 @@
 with Adagraph;
-with Ada.Numerics;
-with Ada.Numerics.Elementary_Functions;
 
-use  Adagraph, Ada.Numerics, Ada.Numerics.Elementary_Functions;
+use  Adagraph;
 
 package Path is
    type Object is private;
