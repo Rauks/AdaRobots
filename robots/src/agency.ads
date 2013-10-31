@@ -9,7 +9,6 @@ pragma Elaborate (Robot);
 package Agency is
    procedure Handle_Transfert(From: in Place_Names; To: in Place_Names);
 
-private
    type Robot_Ref is access Robot.Object;
    type Robot_Array is array (Robot_Id range <>) of Robot_Ref;
 
