@@ -13,13 +13,16 @@ package body Agency is
    task body Mission_Listener is
       Id: Robot_Id;
    begin
-      for R in Robots'Range loop
-         Parking.Object.Park(R);
-      end loop;
-
       loop
          Robot.Mail.Get(Id);
          Parking.Object.Park(Id);
+      end loop;
+   end;
+
+   task body Init_Parking is
+   begin
+      for R in Robots'Range loop
+         Parking.Object.Park(R);
       end loop;
    end;
 

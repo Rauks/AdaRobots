@@ -32,4 +32,6 @@ package Agency is
                                                      Color => Cyan));
 
    task Mission_Listener;
+
+   task Init_Parking;
 end Agency;
