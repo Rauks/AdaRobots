@@ -34,6 +34,8 @@ package body Robot is
                Close(RobotRoute);
 
                Ready := True;
+
+               Mail.Put(Id);
          or
             when Ready =>
                accept Shutdown do
