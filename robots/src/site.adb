@@ -274,17 +274,24 @@ package body Site is
             AngleT := AngleT + Pi/3.0;
          end loop;
          Adagraph.Display_Text (X    => Integer(Windows_Center_X - 20.0),
-                                Y    => Integer(Windows_Center_Y - Scale_Default - 50.0),
+                                Y    => Integer(Windows_Center_Y - Scale_Default - Titles_Margin),
                                 Text => "Site",
-                                Hue  => White);
+                                Hue  => Titles_Color);
       end;
 
       procedure Draw_Parking is
       begin
-         Adagraph.Display_Text (X    => Integer(Windows_Center_X + Scale_Default + 75.0 - 35.0),
-                                Y    => Integer(Windows_Center_Y - Scale_Default - 50.0),
+         Adagraph.Display_Text (X    => Integer(Windows_Center_X + Scale_Default + Parking_Decal_X - 35.0),
+                                Y    => Integer(Windows_Center_Y - Scale_Default - Titles_Margin),
                                 Text => "Parking",
-                                Hue  => White);
+                                Hue  => Titles_Color);
+         for Index in 1..Parking_Places loop
+            Adagraph.Draw_Circle(X      => Integer(Windows_Center_X + Scale_Default + Parking_Decal_X),
+                                 Y      => Integer(Windows_Center_Y - Scale_Default + Float(Index - 1)*Parking_Place_Size),
+                                 Radius => Integer(Parking_Place_Radius),
+                                 Hue    => Parking_Place_Color,
+                                 Filled => No_Fill);
+         end loop;
       end;
 
       procedure Draw_Robot_Parking (Id: Positive;  Color: in Color_Type) is
