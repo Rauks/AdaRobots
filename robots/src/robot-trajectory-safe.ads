@@ -14,6 +14,7 @@ package Robot.Trajectory.Safe is
 private
    type Safe_Object is new Object with record
       Places: Places_Path.Object;
+      Started: Boolean := False;
    end record;
 
    package Resources_Pool is new Generic_Resources_Pool(Site.Place_Names);

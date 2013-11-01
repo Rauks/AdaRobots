@@ -15,12 +15,12 @@ package body Robot.Trajectory.Safe is
          Places_Path.Next(P);
       end loop;
 
-      Resources_Pool.Acquire(Map => Request);
+      Resources_Pool.Acquire(Res => From);
 
       Places_Path.Reset(P);
 
       Trajectory := Open(From, To, Speed);
-      Trajectory_Safe := (Trajectory with Places => P);
+      Trajectory_Safe := (Trajectory with Places => P, Started => False);
 
       return Trajectory_Safe;
    end;
@@ -30,7 +30,20 @@ package body Robot.Trajectory.Safe is
       Target: Place_Names := Places_Path.Value(Trajectory.Places);
       Was_X: Float := Trajectory.X;
       Was_Y: Float := Trajectory.Y;
+      Request: Resources_Pool.Request_Map;
    begin
+      if not Trajectory.Started then
+         while not Places_Path.At_End(Trajectory.Places) loop
+            if not (for some P in Input_Places => P = Places_Path.Value(Trajectory.Places)) then
+               Request(Places_Path.Value(Trajectory.Places)) := True;
+            end if;
+            Places_Path.Next(Trajectory.Places);
+         end loop;
+         Resources_Pool.Acquire(Map => Request);
+         Places_Path.Reset(Trajectory.Places);
+         Trajectory.Started := True;
+      end if;
+
       Next(Object(Trajectory), dt);
 
       In_Target := Site.Robot_Intersect(Target, Was_X, Was_Y);
