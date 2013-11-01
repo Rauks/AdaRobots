@@ -21,6 +21,8 @@ package Site is
    Place_Name_Color: constant Color_Type := White;
    Place_Radius: constant Float := 12.0;
 
+   Parking_Place_Size: constant Float := 30.0;
+
    type Place_Names is (I1, I2, I3, I4, I5, I6,
                         R1, R2, R3, R4, R5, R6,
                         O1, O2, O3, O4, O5, O6,
@@ -44,6 +46,9 @@ package Site is
       procedure Clear_Window;
       procedure Destroy_Window;
       procedure Draw_Site;
+      procedure Draw_Parking;
+      procedure Draw_Robot_Parking (Id: Positive;  Color: in Color_Type);
+      procedure Hide_Robot_Parking (Id: Positive);
       procedure Draw_Place (P: in Place_Names; Color: in Color_Type);
       procedure Draw_Places;
       procedure Draw_Path (P: in Path.Object; Color: in Color_Type);

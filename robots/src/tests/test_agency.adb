@@ -15,6 +15,7 @@ begin
    Safely.Create_Window;
    Safely.Clear_Window;
    Safely.Draw_Site;
+   Safely.Draw_Parking;
 
    Mission_Inputs.Reset(Input_Generator, 345);
    Mission_Outputs.Reset(Output_Generator, 543);
