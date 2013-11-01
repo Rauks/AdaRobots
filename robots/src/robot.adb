@@ -6,6 +6,7 @@ package body Robot is
 
    task body Object is
       Ready: Boolean := True;
+      Needed: Boolean := True;
       RobotRoute: Trajectory.Safe.Safe_Object;
       F: Site.Input_Places;
       T: Site.Output_Places;
@@ -14,7 +15,7 @@ package body Robot is
    begin
       Site.Safely.Draw_Robot_Parking(Positive(Id), Color);
       Mail.Put(Id);
-      loop
+      while Needed loop
          select
             when Ready =>
                accept Go (From: in Site.Input_Places; To: in Site.Output_Places) do
@@ -57,11 +58,10 @@ package body Robot is
 
                Mail.Put(Id);
          or
-            when Ready =>
-               accept Shutdown do
-                  Ready := False;
-               end;
-               exit;
+            accept Shutdown do
+               Ready := False;
+               Needed := False;
+            end;
          or delay 1.0;
          end select;
       end loop;

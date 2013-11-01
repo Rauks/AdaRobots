@@ -10,13 +10,37 @@ package body Agency is
       Robots(Id).Go(From, To);
    end;
 
+   procedure Shutdown is
+   begin
+      Cancel.Signal;
+   end;
+
    task body Mission_Listener is
       Id: Robot_Id;
+      Needed: Boolean := True;
    begin
-      loop
-         Robot.Mail.Get(Id);
-         Parking.Object.Park(Id);
+      while Needed loop
+         select
+            Cancel.Wait;
+            Needed := False;
+         then abort
+            Robot.Mail.Get(Id);
+            Parking.Object.Park(Id);
+         end select;
       end loop;
    end;
 
+   protected body Cancel is
+      procedure Signal is
+      begin
+         Shutdown := True;
+      end;
+
+      entry Wait when Shutdown is
+      begin
+         for Id in Robots'Range loop
+            Robots(Id).Shutdown;
+         end loop;
+      end;
+   end Cancel;
 end Agency;

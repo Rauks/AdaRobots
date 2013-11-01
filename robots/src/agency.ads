@@ -8,7 +8,8 @@ pragma Elaborate (Robot);
 
 package Agency is
    procedure Handle_Transfert(From: in Place_Names; To: in Place_Names);
-
+   procedure Shutdown;
+private
    type Robot_Ref is access Robot.Object;
    type Robot_Array is array (Robot_Id range <>) of Robot_Ref;
 
@@ -41,5 +42,12 @@ package Agency is
                                                      Color => Dark_Gray));
 
    task Mission_Listener;
+
+   protected Cancel is
+      procedure Signal;
+      entry Wait;
+   private
+      Shutdown: Boolean := False;
+   end Cancel;
 
 end Agency;
