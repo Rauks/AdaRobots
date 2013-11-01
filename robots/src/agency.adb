@@ -19,11 +19,4 @@ package body Agency is
       end loop;
    end;
 
-   task body Init_Parking is
-   begin
-      for R in Robots'Range loop
-         Parking.Object.Park(R);
-      end loop;
-   end;
-
 end Agency;

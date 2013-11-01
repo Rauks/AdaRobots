@@ -12,6 +12,8 @@ package body Robot is
       Was_X, Was_Y: Float;
       Path_Drawed: Boolean := False;
    begin
+      Site.Safely.Draw_Robot_Parking(Positive(Id), Color);
+      Mail.Put(Id);
       loop
          select
             when Ready =>

@@ -29,9 +29,17 @@ package Agency is
                                                      Color => Brown),
                                     new Robot.Object(Id => 6,
                                                      Mail => Robot.Mail,
-                                                     Color => Cyan));
+                                                     Color => Cyan),
+                                    new Robot.Object(Id => 7,
+                                                     Mail => Robot.Mail,
+                                                     Color => Magenta),
+                                    new Robot.Object(Id => 8,
+                                                     Mail => Robot.Mail,
+                                                     Color => Light_Gray),
+                                    new Robot.Object(Id => 9,
+                                                     Mail => Robot.Mail,
+                                                     Color => Dark_Gray));
 
    task Mission_Listener;
 
-   task Init_Parking;
 end Agency;
