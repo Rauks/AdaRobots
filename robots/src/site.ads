@@ -12,7 +12,7 @@ package Site is
 
    Site_Color: constant Color_Type := White;
 
-   Robot_Radius: constant Float := 7.0;
+   Robot_Radius: constant Float := 4.0;
 
    Place_R_Color: constant Color_Type := Yellow;
    Place_C_Color: constant Color_Type := Yellow;
