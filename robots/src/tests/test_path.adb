@@ -13,7 +13,7 @@ procedure Test_Path is
    P2: Points := (C, D);
    P: Path.Object;
 
-   R: Robot.Object(Color => White);
+   R: Robot.Object(Id => 1, Mail => Robot.Mail, Color => Blue);
 
    K: Float := 0.0;
    dK: Float := 0.1;

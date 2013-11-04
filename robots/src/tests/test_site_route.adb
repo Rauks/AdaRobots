@@ -5,9 +5,9 @@ with Site;
 use Adagraph, Robot, Site;
 
 procedure Test_Site_Route is
-   R1: Robot.Object(Color => Blue);
-   R2: Robot.Object(Color => Red);
-   R3: Robot.Object(Color => Green);
+   R1: Robot.Object(Id => 1, Mail => Robot.Mail, Color => Blue);
+   R2: Robot.Object(Id => 2, Mail => Robot.Mail, Color => Red);
+   R3: Robot.Object(Id => 3, Mail => Robot.Mail, Color => Green);
 begin
    Safely.Create_Window;
    Safely.Clear_Window;

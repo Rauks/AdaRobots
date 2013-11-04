@@ -17,8 +17,8 @@ begin
    Safely.Draw_Site;
    Safely.Draw_Parking;
 
-   Mission_Inputs.Reset(Input_Generator, 345);
-   Mission_Outputs.Reset(Output_Generator, 543);
+   Mission_Inputs.Reset(Input_Generator);
+   Mission_Outputs.Reset(Output_Generator);
 
    loop
       Agency.Handle_Transfert(From => Mission_Inputs.Random(Input_Generator),
