@@ -13,7 +13,6 @@ package body Robot is
       Was_X, Was_Y: Float;
       Path_Drawed: Boolean := False;
    begin
-      Site.Safely.Draw_Robot_Parking(Positive(Id), Color);
       Mail.Put(Id);
       while Needed loop
          select
@@ -24,6 +23,7 @@ package body Robot is
                   F := From;
                   T := To;
                end;
+               Site.Safely.Draw_Robot_Parking(Positive(Id), Color);
                RobotRoute := Open(F, T, Speed);
                Site.Safely.Hide_Robot_Parking(Positive(Id));
                Site.Safely.Draw_Robot(X     => Integer(X(RobotRoute)),
@@ -62,7 +62,8 @@ package body Robot is
                Ready := False;
                Needed := False;
             end;
-         or delay 1.0;
+         or
+            delay 0.5;
          end select;
       end loop;
    end;
